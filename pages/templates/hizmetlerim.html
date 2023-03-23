@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+<br>
+{% block body %}
+
+{% if hizmetlerim %}
+  <h1>Hyzmatlarym</h1>
+   <br>
+  <table class="table">
+    <thead>
+      <tr>
+        
+        <th scope="col">No</th>
+        <th scope="col">Hyzmat Ady</th>
+        <th scope="col">Yaynlama Taryhy</th>
+        <th scope="col">Hyzmaty Düzelt</th>
+        <th scope="col">Hyzmat Poz</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+      
+     
+     {% for hizmet in hizmetlerim%}
+     <tr>
+        <th scope="row">{{hizmet.id}}</th>
+        <td><a href="detay/{{hizmet.id}}">{{hizmet.title}}</a></td>
+        <td>{{hizmet.tarih}}</td>
+        <td><a href="duzelt/{{hizmet.id}}" class="btn btn-success">Düzelt</a></td>
+        <td>
+          <td><a href="poz/{{hizmet.id}}" class="btn btn-danger">poz</a></td>
+       </td>
+     </tr>
+     
+     {% endfor %}   
+      </table>
+      <br>
+{% else %}
+<h1>Hyzmatlarym</h1>
+<hr>
+<p>İntak Hyzmat Yayynlamadınız <a href="{% url 'hizmet:hizmet_ekle' %}">Hyzmatynyzy Yayynlan</a></p>
+{% endif %}
+{% endblock body %}
+

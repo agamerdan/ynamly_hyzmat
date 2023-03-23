@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+
+<div class="container">
+    <h1>Ulgama Gir</h1>
+    <hr>
+    <p>Boş Bolan Yerleri Doldurun we Gir Dügmesine Basın</p>
+    <hr>
+      
+           <form method="post">
+            
+               <b>
+                     {% csrf_token %}
+                    {{form|crispy}}
+                </b>
+                
+                 
+           
+                <button type="submit" class="btn btn-primary"> Ulgama Gir</button>
+            </form> 
+
+            
+  
+ 
+</div>
+{% endblock  %}

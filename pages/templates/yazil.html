@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ddd9d9;
+
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=file]{
+  width: 100%;
+  padding: 12px 20px;
+  
+  display: inline-block;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 8px 14px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.Avatar {
+  width: 30%;
+  border-radius: 50%;
+}
+
+
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.ana {
+  margin-top: 10px; 
+  margin: auto;
+  width: 50%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  
+}
+</style>
+
+<br>
+ <div  class="ana">
+<div class="imgcontainer">
+      
+      <img src="{% static 'resim/user.png' %}" alt="Avatar" class="Avatar">
+    </div>
+ 
+  <form  method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media }}
+      <label for="uname"><b>Ad</b></label>
+      <input type="text" placeholder="Merdan" name="fname" required>
+
+      <label for="psw"><b> Familya</b></label>
+      <input type="text" placeholder="Babayev" name="lname" required>
+
+      <label for="uname"><b> Hesap Ady</b></label>
+      <input type="text" placeholder="MerdanB" name="uname" required>
+
+      <label for="psw"><b> Parol</b></label>
+      <input type="password" placeholder="Parol" name="psw" required>
+
+      <label for="psw_confirim"><b> Parol Gaytala</b></label>
+      <input type="password" placeholder="Parol" name="psw_confirim" required><br>
+      
+      <label for="filename"><b>Profil suratyny yükle</b></label>
+      <input type="file" id="myFile" name="filename">
+        
+      <button type="submit">Hesap Aç</button>
+      </form>
+    </div>
+{% endblock body %}
+
+ 
+
+
+
+
+
+       
+       
+
+   
+
+

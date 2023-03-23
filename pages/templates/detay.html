@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Post content-->
+        <article>
+            <!-- Post header-->
+            <header class="mb-4">
+                <!-- Post title-->
+                <h1 class="fw-bolder mb-1">{{hyzmat.title}}</h1>
+                <!-- Post meta content-->
+                <div class="text-muted fst-italic mb-2">{{hyzmat.tarih}}</div>
+                <!-- Post categories-->
+                <p><b>{{hyzmat.adSoyad}}</b></p>
+            </header>
+            <!-- Preview image figure-->
+            {% if hyzmat.hizmet_img %}
+            <figure class="mb-4"><img  class="img-fluid rounded card-img" src="/media/{{hyzmat.hizmet_img}}" alt="..." ></figure>
+        
+            {% endif %}
+
+            
+            <!-- Post content-->
+            <section class="mb-5">
+              <p class="fs-5 mb-4">{{hyzmat.content}}</p>
+            </section>
+        </article>
+        <!-- Comments section-->
+        
+        <section class="mb-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <!-- Comment form-->
+                    <form class="mb-4" method="post" action="{%url 'hizmet:yorum' hyzmat.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"><h5>Yorumunuz</h5></label>
+                            <textarea name="comment_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Yorum Goş</button>
+                    
+                    </form>
+                    {% if request.user.is_authenticated %}
+                       {% if comment %}
+                          {% for yorum in comment %}
+                     <!-- Single comment-->
+                           <div class="d-flex">
+                             <div class="flex-shrink-0"><img class="avatar" src="/media/{{yorum.comment_avatar}}" alt="..." /></div>
+                               <div class="ms-3">
+                                    <div class="fw-bold">{{yorum.comment_author}}</div>
+                                       {{yorum.comment_content}}
+                                    <div>
+                                    <small class="text-muted fst-italic mb-2">{{yorum.comment_date}}</small>
+                               </div>
+                            
+                                 <hr>
+                             </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% endif %}
+                </div>
+                
+            </div>
+        </section>
+    </div>
+        
+                
+   
+                    <!-- Comment with nested comments-->
+                    
+    <!-- Side widgets-->
+    <div class="col-lg-4">
+        <!-- Search widget-->
+        <div class="card mb-4 ">
+           
+            <a href="#" class="btn btn-dark">Hyzmat Berene Yaz</a>
+        </div>
+        <!-- Categories widget-->
+        <div class="card mb-4">
+            <div class="card-header">Categories</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#!">Web Design</a></li>
+                            <li><a href="#!">HTML</a></li>
+                            <li><a href="#!">Freebies</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#!">JavaScript</a></li>
+                            <li><a href="#!">CSS</a></li>
+                            <li><a href="#!">Tutorials</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Side widget-->
+        <div class="card mb-4">
+            <div class="card-header">Side Widget</div>
+            <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<h1>Hyzmat Düzelt</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-danger"> Hyzmat Düzelt</button>
+</form>
+
+{% endblock body %}

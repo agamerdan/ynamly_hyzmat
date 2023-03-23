@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+{% load crispy_forms_tags %}
+
+<h1>Hyzmat Goş</h1>
+<hr>
+<a href="{% url 'hizmet:hizmetlerim' %}"><p>Önceki hyzmatlarym</p></a>
+{% if request.user.is_authenticated %}
+
+<div class="row">
+  <div class="col-md-12 ofset-md-3 ">
+    <form method="post" enctype="multipart/form-data">
+      <b>
+      {% csrf_token %}
+      
+      {{form|crispy}}
+      </b>
+      <br>
+      <button type="submit" class="btn btn-danger">Hyzmat Goş</button>
+    </form> 
+  </div>
+</div>
+{% else %}
+<div>
+  <p>Hyzmat Goşup bilmeginiz üçün ulgama girmeginiz gerek. Ulgama girmek üçün bu <a href="{% url 'giris' %}">linke</a>  basypbilersiniz </p>
+</div>
+{% endif %}
+{% endblock body  %}

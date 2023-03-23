@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Ynamly Hyzmat</title>
+
+</head>
+<body class="arka">
+    {% include 'includes/navbar.html' %}
+
+    
+
+    
+    <div class="container bg-light">
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+            
+            {% if messages %}
+            
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    
+                    <strong>{{ message }}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                
+                {% endfor %}
+         
+            {% endif %}
+          {% block body %}
+          {% endblock  %}
+         
+        </div>
+
+    </div>
+ 
+    
+   
+   
+   
+
+
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/jquery-3.6.3.min.js'%}"></script>
+
+</body>
+
+</html>
+{% include 'includes/footer.html' %}    
