@@ -2,17 +2,18 @@ from django.shortcuts import render,redirect, get_object_or_404,reverse
 from .forms import ArticleForm
 from django.contrib import messages
 from . models import Article, CommentModel
+from django.core.paginator import Paginator
 
 
 
 def hizmetler(request):
-    keyword=request.GET.get("keyword")
-    if keyword:
-        articles=Article.objects.filter(title=keyword)
-        print(articles)
-        return render(request, 'hizmetler.html',{"articles":articles})
-    articles=Article.objects.all()
-    return render(request, "hizmetler.html",{"articles":articles})
+    get_articles = Article.objects.all()
+    paginator = Paginator(get_articles, 5) # Show 25 contacts per page.
+
+    page_number = request.GET.get('page')
+    articles = paginator.get_page(page_number)
+    return render(request, 'hizmetler.html', {'articles': articles})
+    
 
 
 
