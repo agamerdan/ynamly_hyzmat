@@ -1,5 +1,7 @@
 {% load static %}
 
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #23b6ed;">
   <a class="navbar-brand"style="margin-left:5%;" href="{% url 'index' %}"> <img class="resim" src="{% static 'resim/Resim3.png' %}" alt="logo"></a>
@@ -31,6 +33,8 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmet_ekle' %}" style="color: white; font-size: 120%;">Hyzmat_Goş</a>
         </li>
+        
+
       </ul>
     </div>
   </div>
@@ -40,7 +44,9 @@
            <li class="nav-item mt-2">
             
             {% if request.user.profile.avatar %}
-               <img onmouseover="oneFunc()" onmouseleave="twoFunc()" src="/media/{{request.user.profile.avatar}}" alt="Avatar" class="avatar">
+            
+             <img  src="/media/{{request.user.profile.avatar}}" alt="Avatar" class="avatar">
+               
             {% endif %}
              
            </li>
@@ -80,11 +86,5 @@
   function myFunction(x) {
     x.classList.toggle("change");
   }
-  const text=document.getElementById("text")
-  const oneFunc=()=>{
-    text.classList.remove('not-visible')
-  }
-  const twoFunc=()=>{
-    text.classList.add('not-visible')
-  }
+  
   </script>

@@ -4,7 +4,52 @@
 
 {% block body %}
 
-
+   {% if arananlar %}
+   {% for aranan in arananlar %}
+    <div class="box_h">
+    <div class="disk">
+     <div class="row">
+        <div class="col-md-12">
+            <div class="card-mb-0">
+                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                 <div class="row" style=" bg-light ">
+                    <div class="col-md-3">
+                        {% if aranan.hizmet_img %}
+                        <a href="{% url 'hizmet:detay' aranan.id %}"><img class="card-img" src="/media/{{aranan.hizmet_img}}" alt="Avatar"></a>
+                        {% else %}
+                        <a href="{% url 'hizmet:detay' aranan.id %}"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
+                        {% endif %}
+                        
+                        
+                        
+                        
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                           <a href="{% url 'hizmet:detay' aranan.id %}" class="text-bg-light"><div class="card-title"><h3>{{aranan.title}}</h3></div></a> 
+                            <a href="{% url 'hizmet:detay' aranan.id %}" class="text-bg-light">
+                                <p class="card-text">
+                                  {{aranan.content|truncatewords:40}}
+                                </p>
+                            </a>
+                            <p class="card-text">
+                                <small class="text-muted">{{aranan.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">{{aranan.fiyatbilgisi}}</small>
+                            </p>
+                        </div>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            </div>
+            </div>
+            <br>
+    {% endfor %}
+   
+   
+   {% endif %}
     
     {% if articles %}
     {% for article in articles %}
@@ -49,8 +94,30 @@
             </div>
             <br>
     {% endfor %}
-
-    <button id="load-more*" class="btn btn-primary" >Load More</button>
+    
+        <div class="pagination">
+            <span class="step-links">
+              {% if articles.has_previous %}
+                <a href="?page=1" class="previous">&laquo; Başa</a>
+                <a href="?page={{ articles.previous_page_number }}" class="previous round">&#8249;</a>
+               
+              {% endif %}
+    
+              <span class="current">
+                 <div class="actif-number">{{ articles.number }}</div> of <div class="last-page">{{ articles.paginator.num_pages }}</div>
+              </span>
+    
+              {% if articles.has_next %}
+                 <a href="?page={{ articles.next_page_number }}" class="next round">&#8250;</a>
+                 <a href="?page={{ articles.paginator.num_pages }}" class="next">Next &raquo;</a>
+               
+              {% endif %}
+           </span>
+        </div>
+   
+    
+     
+    
 
 
     {% else %}
