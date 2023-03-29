@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 def hizmetler(request):
     get_articles = Article.objects.all()
-    paginator = Paginator(get_articles, 5) # Show 25 contacts per page.
+    paginator = Paginator(get_articles, 3) # Show 25 contacts per page.
 
     page_number = request.GET.get('page')
     articles = paginator.get_page(page_number)
