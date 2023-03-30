@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect, get_object_or_404,reverse
 from .forms import ArticleForm
 from django.contrib import messages
-from . models import Article, CommentModel
+from . models import Article, CommentModel, Likes
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 
 
@@ -77,5 +78,22 @@ def yorum(request, id):
             messages.warning(request, "Yorum yapmak üçün giriş yapmanız gerek")
             return redirect('giris')
     return redirect(reverse("hizmet:detay",kwargs={"id":id}))
+
+def artikle_likes(request, id):
+    user=request.user
+    article=Article.objects.get(id=id)
+    current_likes=article.like
+    liked=Likes.objects.filter(user=user,article=article).count()
+    if not liked:
+        liked=Likes.objects.create(user=user, article=article)
+        current_likes=current_likes+1
+    else:
+        liked=Likes.objects.filter(user=user, article=article).delete()
+        current_likes=current_likes-1
         
+    article.like=current_likes
+    print ("begenme", article.like)
+    article.save()
+    
+    return redirect(reverse('hizmet:detay',kwargs={"id":id}))
 
