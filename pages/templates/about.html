@@ -30,9 +30,9 @@
     }
     
     .about-section {
-      padding: 50px;
+      padding: 10px;
       text-align: center;
-      background-color: #474e5d;
+      background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664 );
       color: white;
     }
     
@@ -65,7 +65,19 @@
     .button:hover {
       background-color: #555;
     }
-    
+    h2 {
+      font-weight:bold; 
+      font-size: 50px;
+      background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h3 {
+      font-size: 30px;
+      background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     @media screen and (max-width: 650px) {
       .column {
         width: 100%;
@@ -80,43 +92,43 @@
         <p>Bu Wb Sitesi Türkmenistanly İldeşlermizin Bir-birlerine Kömek Edip Bilmeleri Üçin Tayınlandy</p>
       </div>
       
-      <h2 style="text-align:center">Bizin Takımımız</h2>
+      <h2 style="text-align:center;">Bizin Takımımız</h2>
       <div class="row">
         <div class="column">
           <div class="card">
-            <img src="{% static 'resim/profilim.jpeg' %}" alt="Jane" style="width:100%; height: 12  0px;">
+            <img src="{% static 'resim/merdansurat.jpg' %}" alt="Jane" style="width:100%; height: 12  0px;">
             <div class="container">
-              <h2>Agamerdan Babayev</h2>
-              <p class="title">Yönetici</p>
+              <h3 class="text-center"style="font-weight:bold">Agamerdan Babayew</h3>
+              <p class="title">Fullstack</p>
               <p>Bu sitenin Yöneticisi ve Dinamik işlevlerinden sorumlu</p>
               <p>babayevmerdan20@gmail.com</p>
-              <p><button class="button">Habarlaşmak</button></p>
+              <p><button class="button" style="color: white; background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664 )" >Habarlaşmak</button></p>
             </div>
           </div>
         </div>
         
         <div class="column">
           <div class="card">
-            <img src="{% static 'resim/surat.jpeg' %}" alt="Mike" style="width:100%; height:400px;">
+            <img src="{% static 'resim/suratayna.jpg' %}" alt="Mike" style="width:100%">
             <div class="container">
-              <h2>Ayna Hemrayewa</h2>
-              <p class="title">Tasarımcı</p>
-              <p>Bu sitenin tasarım işlerinden sorumlu</p>
+              <h3  class="text-center"style="font-weight:bold">Ayna Hemrayewa</h3>
+              <p class="title">Frontend</p>
+              <p>Bu sitenin tasarım işlerinden sorumlu                </p>
               <p>hemrayewa.ayna@gmail.com</p>
-              <p><button class="button">Habarlaşmak</button></p>
+              <p><button class="button" style="color: white; background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664 )" >Habarlaşmak</button></p>
             </div>
           </div>
         </div>
         
         <div class="column">
           <div class="card">
-            <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+            <img src="{% static 'resim/sypasurat.jpg' %}" alt="John" style="width:100%">
             <div class="container">
-              <h2>Şypa Annamuhammedov</h2>
-              <p class="title">Yazılımcı</p>
+              <h3 class="text-center" style="font-weight:bold";>Şypa Annamuhammedow</h3>
+              <p class="title">Backend</p>
               <p>Bu sitenin dinamik kısmından sorumlu</p>
-              <p>john@example.com</p>
-              <p><button class="button">Habarlaşmak</button></p>
+              <p>shypa.2019@gmail.com</p>
+              <p><button class="button"  style="color: white; background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664 )" >Habarlaşmak</button></p>
             </div>
           </div>
         </div>
