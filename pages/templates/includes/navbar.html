@@ -2,15 +2,14 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #23b6ed;">
-  <a class="navbar-brand"style="margin-left:5%;" href="{% url 'index' %}"> <img class="resim" src="{% static 'resim/Resim3.png' %}" alt="logo"></a>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664 )" >
+  <a class="navbar-brand"style="margin-left:4%;" href="{% url 'index' %}"> <img class="resim" src="{% static 'resim/logoo.png' %}" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="cont" onclick="myFunction(this)">
               <div class="bar1"></div>
               <div class="bar2"></div>
               <div class="bar3"></div>
-            </div>
+            </div> 
 
           </button>
 
@@ -21,17 +20,17 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'index' %}" style="color: white; font-size: 120%;margin-right:auto;">Baş_Sahypa</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}" style="color: white; font-size: 120%;  font-weight:bold; margin-right:30px;">Baş_Sahypa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmetler' %}" style="color: white; font-size: 120%;margin-right:auto;">Hyzmatlar</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmetler' %}" style="color: white; font-size: 120%; font-weight:bold;  margin-right:30px;">Hyzmatlar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'about' %}" style="color: white; font-size: 120%;margin-right:auto;">Biz_Barada</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'about' %}" style="color: white; font-size: 120%; font-weight:bold;  margin-right:30px;">Biz_Barada</a>
         </li>
          
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmet_ekle' %}" style="color: white; font-size: 120%;">Hyzmat_Goş</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmet_ekle' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px;">Hyzmat_Goş</a>
         </li>
         
 
@@ -51,7 +50,7 @@
              
            </li>
           <li class="nav-item mr-3 ">
-            <a class="nav-link active " aria-current="page" href="{% url 'cikis' %}" style="color: white; font-size: 120%;">Ulgamdan_Çık</a>
+            <a class="nav-link active " aria-current="page" href="{% url 'cikis' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px;">Ulgamdan_Çık</a>
           </li>
         </ul>
         
@@ -59,10 +58,10 @@
       {%else%}
       <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
             <li class="nav-item ">
-              <a class="nav-link active " aria-current="page" href="{% url 'giris' %}" style="color: white; font-size: 120%;">Gir</a>
+              <a class="nav-link active " aria-current="page" href="{% url 'giris' %}" style="color: white; font-size: 120%;margin-right:30px; font-weight:bold; ">Gir</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link active " aria-current="page" href="{% url 'yazil' %}" style="color: white; font-size: 120%; float: right: ; ">Hasap_Aç</a>
+              <a class="nav-link active " aria-current="page" href="{% url 'yazil' %}" style="color: white; font-size: 120%; margin-right:30px;float: right: ; font-weight:bold;  ">Hasap_Aç</a>
             </li>
       </ul>
       

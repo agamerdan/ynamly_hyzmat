@@ -3,7 +3,15 @@
 
 
 {% block body %}
-
+<style>
+    h3 {
+      font-weight:bold; 
+      font-size: 40px;
+      background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
    {% if arananlar %}
    {% for aranan in arananlar %}
     <div class="box_h">
@@ -98,18 +106,18 @@
         <div class="pagination">
             <span class="step-links">
               {% if articles.has_previous %}
-                <a href="?page=1" class="previous">&laquo; Başa</a>
-                <a href="?page={{ articles.previous_page_number }}" class="previous round">&#8249;</a>
+                <a href="?page=1" class="previous"style="color: white; background-image: linear-gradient(to right, #940e99, #0e069b )">&laquo; Başa</a>
+                <a href="?page={{ articles.previous_page_number }}" class="previous round"style="color: white; background-image: linear-gradient(to right, #940e99,  #0e069b)">&#8249;</a>
                
               {% endif %}
     
               <span class="current">
-                 <div class="actif-number">{{ articles.number }}</div> of <div class="last-page">{{ articles.paginator.num_pages }}</div>
+                 <div class="actif-number"style="color: white; background-color:#940e99">{{ articles.number }}</div> of <div class="last-page"style="color: white; background-color:#0e069b">{{ articles.paginator.num_pages }}</div>
               </span>
     
               {% if articles.has_next %}
-                 <a href="?page={{ articles.next_page_number }}" class="next round">&#8250;</a>
-                 <a href="?page={{ articles.paginator.num_pages }}" class="next">Next &raquo;</a>
+                 <a href="?page={{ articles.next_page_number }}" class="next round"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">&#8250;</a>
+                 <a href="?page={{ articles.paginator.num_pages }}" class="next"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">Next &raquo;</a>
                
               {% endif %}
            </span>
