@@ -34,7 +34,7 @@
         </li>
         
 {% if request.user.is_authenticated %}
-         <ul class="navbar-nav me-auto ml-2 mb-2 mb-lg-0">
+         <ul class="navbar-nav ml-auto ml-2 mb-2 mb-lg-0" >
            <li class="nav-item mt-2">
             
             {% if request.user.profile.avatar %}
@@ -45,7 +45,7 @@
              
            </li>
           <li class="nav-item mr-3 ">
-            <a class="nav-link active " aria-current="page" href="{% url 'cikis' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px;">Ulgamdan_Çık</a>
+            <a class="nav-link active " aria-current="page" href="{% url 'cikis' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px; ">Ulgamdan_Çık</a>
           </li>
         </ul>
         
@@ -56,7 +56,7 @@
               <a class="nav-link active " aria-current="page" href="{% url 'giris' %}" style="color: white; font-size: 120%;margin-right:30px; font-weight:bold; ">Gir</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link active " aria-current="page" href="{% url 'yazil' %}" style="color: white; font-size: 120%; margin-right:30px;float: right: ; font-weight:bold;  ">Hasap_Aç</a>
+              <a class="nav-link active " aria-current="page" href="{% url 'yazil' %}" style="color: white; font-size: 120%; margin-right:30px;float: right ; font-weight:bold;  ">Hasap_Aç</a>
             </li>
       </ul>
       
