@@ -81,9 +81,16 @@
             <a href="#" class="btn btn-dark">Hyzmat Berene Yaz</a>
         </div>
         <div class="card mb-4 ">
-           
-            <a href="{% url 'hizmet:artikle_likes' hyzmat.id %}" ><img src="{% static 'resim/kalp.png' %}" alt="" style="width: 40px; height: 40px;"></a>
+          {% if liked %}
+          <a href="{% url 'hizmet:artikle_likes' hyzmat.id %}" ><img src="{% static 'resim/kirmizikalp.png' %}" alt="" style="width: 40px; height: 35px;"></a>
             <small>{{hyzmat.like}}</small>
+          {% else %}
+          <a href="{% url 'hizmet:artikle_likes' hyzmat.id %}" ><img src="{% static 'resim/kalp.png' %}" alt="" style="width: 40px; height: 35px;"></a>
+            <small>{{hyzmat.like}}</small>
+          {% endif %}
+            
+           
+           
         </div>
         
         <!-- Categories widget-->
