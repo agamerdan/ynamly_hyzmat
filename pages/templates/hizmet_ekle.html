@@ -2,7 +2,15 @@
 {% load static %}
 {% block body %}
 {% load crispy_forms_tags %}
-
+<style>
+  h1 {
+    font-weight:bold; 
+    font-size: 50px;
+    background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
 <h1>Hyzmat Goş</h1>
 <hr>
 <a href="{% url 'hizmet:hizmetlerim' %}"><p>Önceki hyzmatlarym</p></a>
