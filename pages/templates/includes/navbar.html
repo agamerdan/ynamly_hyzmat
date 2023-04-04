@@ -33,18 +33,13 @@
           <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmet_ekle' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px;">Hyzmat_Goş</a>
         </li>
         
-
-      </ul>
-    </div>
-  </div>
-      
-        {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
          <ul class="navbar-nav me-auto ml-2 mb-2 mb-lg-0">
            <li class="nav-item mt-2">
             
             {% if request.user.profile.avatar %}
             
-             <img  src="/media/{{request.user.profile.avatar}}" alt="Avatar" class="avatar">
+             <img  src="/media/{{request.user.profile.avatar}}" alt="Avatar" class="avatar" style="margin-top: -10px;">
                
             {% endif %}
              
@@ -68,6 +63,11 @@
 
          
       {% endif %}
+      </ul>
+    </div>
+  </div>
+      
+        
       
       
       
