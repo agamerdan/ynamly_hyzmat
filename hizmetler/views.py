@@ -4,6 +4,7 @@ from django.contrib import messages
 from . models import Article, CommentModel, Likes
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
+from django.views.generic.detail import DetailView
 
 
 
@@ -79,6 +80,26 @@ def yorum(request, id):
             return redirect('giris')
     return redirect(reverse("hizmet:detay",kwargs={"id":id}))
 
+# class PostDetailView(DetailView):
+#     model=Article
+#     context_object_name='article'
+#     template_name='detay.html'
+    
+#     def get(self, request, *args, **kwargs):
+#         self.object=self.get_object()
+#         context=self.get_context_data(object=self.object)
+        
+#         like_status=False
+#         liked=Likes.objects.filter(user=request.user,article=self.object)
+#         if not liked:
+#             like_status=True
+#         else:
+#             like_status=False
+#         print(like_status)
+#         context={"like_status":like_status,}
+#         return self.render_to_response(context)
+        
+
 def artikle_likes(request, id):
     if request.user.is_authenticated:
         user=request.user
@@ -87,9 +108,11 @@ def artikle_likes(request, id):
         liked=Likes.objects.filter(user=user,article=article).count()
         if not liked:
           liked=Likes.objects.create(user=user, article=article)
+          article.like_status=True
           current_likes=current_likes+1
         else:
           liked=Likes.objects.filter(user=user, article=article).delete()
+          article.like_status=False
           current_likes=current_likes-1
         
         article.like=current_likes

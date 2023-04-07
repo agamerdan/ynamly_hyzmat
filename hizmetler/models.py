@@ -13,9 +13,14 @@ class Article(models.Model):
     hizmet_img=models.FileField(blank=True,null=True, verbose_name="Surat Yükle")
     tarih=models.DateTimeField(auto_now_add=True)
     like=models.IntegerField(default=0)
-    
+    like_status=models.BooleanField(default=False)
+   
+
     def __str__(self):
         return self.title
+    def total_likes(self):
+        return self.likes.count()
+        
     
 class CommentModel(models.Model):
     article=models.ForeignKey(Article,on_delete=models.CASCADE, verbose_name="Hyzmat",related_name="comments")
@@ -30,3 +35,4 @@ class CommentModel(models.Model):
 class Likes(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_like")
     article=models.ForeignKey(Article, on_delete=models.CASCADE,related_name="post_like")
+    like_resim=models.ImageField(default="resim/kalp.png")

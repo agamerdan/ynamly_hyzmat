@@ -175,10 +175,7 @@ input[type=text], select, textarea {
   resize: vertical;
 }
 
-.heart{
-  max-width: 40px;
-  
-}
+
 
 
 
@@ -449,6 +446,29 @@ display: inline-block;
   margin: 5px;
   background-color: rgb(144, 146, 147);
   font-size: 18px;
+}
+
+
+/*heart_btn*/
+
+.heart_btn{
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 50px;
+  color: rgb(214, 17, 17);
+}
+.heart_btn_else{
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 50px;
+  color: rgb(180, 173, 173);
+}
+
+
+.heart_btn, i:hover{
+  cursor: pointer;
 }
 
 
