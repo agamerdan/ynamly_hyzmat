@@ -86,13 +86,19 @@
                                 <p class="card-text">
                                   {{article.content|truncatewords:40}}
                                 </p>
-                            </a>
+                            </a> 
+                            <br>
+                            <p >
+                               <b>{{article.fiyatbilgisi}}</b> 
+                            </p>
                             <p class="card-text">
                                 <small class="text-muted">{{article.tarih|date:"SHORT_DATE_FORMAT"}}</small>
                             </p>
                             <p class="card-text">
-                                <small class="text-muted">{{article.fiyatbilgisi}}</small>
+                                <small class="text-muted"><i class="fa-sharp fa-solid fa-heart"></i></small>
+                                <small class="text-muted">{{article.like}}</small>
                             </p>
+                           
                         </div>
                     </div>
                  </div>

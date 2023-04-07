@@ -12,9 +12,11 @@
                 <!-- Post title-->
                 <h1 class="fw-bolder mb-1">{{hyzmat.title}}</h1>
                 <!-- Post meta content-->
-                <div class="text-muted fst-italic mb-2">{{hyzmat.tarih}}</div>
+                <div class="text-muted fst-italic mb-2">{{hyzmat.tarih|date:"SHORT_DATE_FORMAT"}}</div>
                 <!-- Post categories-->
                 <p><b>{{hyzmat.adSoyad}}</b></p>
+                  <br>
+                  <p><b>{{hyzmat.fiyatbilgisi}}</b></p>
             </header>
             <!-- Preview image figure-->
             {% if hyzmat.hizmet_img %}
@@ -54,7 +56,7 @@
                                     <div class="fw-bold">{{yorum.comment_author}}</div>
                                        {{yorum.comment_content}}
                                     <div>
-                                    <small class="text-muted fst-italic mb-2">{{yorum.comment_date}}</small>
+                                    <small class="text-muted fst-italic mb-2">{{yorum.comment_date|date:"SHORT_DATE_FORMAT"}}</small>
                                </div>
                             
                                  <hr>
