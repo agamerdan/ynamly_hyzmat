@@ -16,18 +16,26 @@
 <a href="{% url 'hizmet:hizmetlerim' %}"><p>Önceki hyzmatlarym</p></a>
 {% if request.user.is_authenticated %}
 
-<div class="row">
-  <div class="col-md-12 ofset-md-3 ">
-    <form method="post" enctype="multipart/form-data">
-      <b>
-      {% csrf_token %}
-      
-      {{form|crispy}}
-      </b>
-      <br>
-      <button type="submit" class="btn btn-danger">Hyzmat Goş</button>
-    </form> 
-  </div>
+<form  method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.media }}
+  <label for="fname"><b>Telefon Nomer</b></label>
+  <input type="number" placeholder="0555 555 5555" name="number" required>
+
+  <label for="psw"><b> İş Başlıgı</b></label>
+  <input type="text" placeholder="Okuw Çakylygy" name="title" required>
+
+  <label for="uname"><b>Hyzmat Bahasy</b></label>
+  <input type="text" placeholder="2500tl" name="price" required>
+
+  <label for="psw"><b>Hyzmat Barada</b></label>
+  <textarea cols='10' rows='10'placeholder="Yayınlamak isleyan hyzmatynyz barada açyklama yazyn" name="context"  required></textarea>
+  
+  <label for="filename"><b>Profil suratyny yükle</b></label>
+  <input type="file" id="myFile" name="hizmetfile">
+    
+  <button type="submit">Yayynla</button>
+  </form>
 </div>
 {% else %}
 <div>

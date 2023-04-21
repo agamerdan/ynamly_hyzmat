@@ -167,8 +167,9 @@ hr {
 }
 
 
-input[type=text], select, textarea {
+input[type=text], select, textarea, input[type=number],input[type=file] {
   width: 100%;
+  margin-right: auto;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;

@@ -27,17 +27,26 @@ def hizmetlerim(request):
     return render(request, 'hizmetlerim.html', context)
 
 def hizmet_ekle(request):
-    form=ArticleForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        article=form.save(commit=False)
-        article.author=request.user
-        article.adSoyad=request.user.first_name +" "+ request.user.last_name
-        article.save()
+    articl=Article()
+    if request.method=="POST" or request.method=="FILES":
+        article=request.POST
+        telefon=article.get('number')
+        title=article.get('title')
+        fiyat=article.get('price')
+        context=article.get('context')
+        hizmet_img=article.get('hizmetfile')
+        articl.author=request.user
+        articl.adSoyad=request.user.first_name +" "+ request.user.last_name
+        articl.telefon=telefon
+        articl.title=title
+        articl.fiyatbilgisi=fiyat
+        articl.content=context
+        articl.hizmet_img=hizmet_img
+        articl.save()
         messages.success(request, "Hyzmatynyz hasaba alyndy we Yayynlandy")
         return redirect('hizmet:hizmetlerim')
    
-    return render(request, 'hizmet_ekle.html',{"form":form})
-
+    return render(request, 'hizmet_ekle.html')
 
 
 def detay(request, id):
