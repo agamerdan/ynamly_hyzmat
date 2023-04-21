@@ -13,12 +13,12 @@ class Article(models.Model):
     hizmet_img=models.FileField(blank=True,null=True, verbose_name="Surat Yükle")
     tarih=models.DateTimeField(auto_now_add=True)
     like=models.IntegerField(default=0)
-    like_status=models.BooleanField(default=False)
+    likes = models.CharField(max_length=50, blank=True,null=True,)
    
 
     def __str__(self):
         return self.title
-    def total_likes(self):
+    def number_of_likes(self):
         return self.likes.count()
         
     

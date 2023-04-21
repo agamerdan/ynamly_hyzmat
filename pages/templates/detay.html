@@ -85,14 +85,18 @@
         </div>
         <div class="card mb-4 ">
           <form action="{%url 'hizmet:artikle_likes' hyzmat.id %}">
-          {% csrf_token %}
-          {% if hyzmat.like_status %}
-           <button type="submit"name="blog_id"   class="heart_btn"><i class="fa-sharp fa-solid fa-heart"></i></button> 
-           {% else %}
-           <button type="submit"name="blog_id"   class="heart_btn_else"><i class="fa-sharp fa-solid fa-heart"></i></button> 
-           {% endif %}
-            <small>{{hyzmat.like}}</small>
-          </form>
+                {% csrf_token %}
+                {% if like_status %}
+                   <button type="submit"name="blog_id"   class="heart_btn"><i class="fa-sharp fa-solid fa-heart"></i></button> 
+                {% else %}
+                   <button type="submit"name="blog_id"   class="heart_btn_else"><i class="fa-sharp fa-solid fa-heart"></i></button> 
+                {% endif %}
+                    <small>{{hyzmat.like}}</small>
+          </form> 
+
+
+ 
+
             
           
            

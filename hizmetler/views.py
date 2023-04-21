@@ -42,8 +42,13 @@ def hizmet_ekle(request):
 
 def detay(request, id):
     hyzmat=Article.objects.filter(id=id).first()
+    likes=hyzmat.likes
+    if likes==request.user.username:
+        like_status=True
+    else:
+        like_status=False
     comment=hyzmat.comments.all()
-    return render(request, "detay.html", {"hyzmat":hyzmat, "comment":comment})
+    return render(request, "detay.html", {"hyzmat":hyzmat, "comment":comment, "like_status":like_status})
 
 
 
@@ -80,46 +85,53 @@ def yorum(request, id):
             return redirect('giris')
     return redirect(reverse("hizmet:detay",kwargs={"id":id}))
 
-# class PostDetailView(DetailView):
-#     model=Article
-#     context_object_name='article'
-#     template_name='detay.html'
-    
-#     def get(self, request, *args, **kwargs):
-#         self.object=self.get_object()
-#         context=self.get_context_data(object=self.object)
-        
-#         like_status=False
-#         liked=Likes.objects.filter(user=request.user,article=self.object)
-#         if not liked:
-#             like_status=True
-#         else:
-#             like_status=False
-#         print(like_status)
-#         context={"like_status":like_status,}
-#         return self.render_to_response(context)
+# def artikle_likes(request, id):
+#     post = get_object_or_404(Article, id=request.POST.get('blogpost_id'))
+#     if post.likes.filter(id=request.user.id).exists():
+#         post.likes.remove(request.user)
+#     else:
+#         post.likes.add(request.user)
+
+#     return HttpResponseRedirect(reverse('hizmet:detay', args=[id]))
+
+# class BlogPostDetailView(DetailView):
+#     model = Article
+#     # template_name = MainApp/BlogPost_detail.html
+#     # context_object_name = 'object'
+
+#     def get_context_data(self, **kwargs):
+#         data = super().get_context_data(**kwargs)
+
+#         likes_connected = get_object_or_404(Article, id=self.kwargs['pk'])
+#         liked = False
+#         if likes_connected.likes.filter(id=self.request.user.id).exists():
+#             liked = True
+#         data['number_of_likes'] = likes_connected.number_of_likes()
+#         data['post_is_liked'] = liked
+#         return data
         
 
 def artikle_likes(request, id):
-    if request.user.is_authenticated:
-        user=request.user
-        article=Article.objects.get(id=id)
-        current_likes=article.like
-        liked=Likes.objects.filter(user=user,article=article).count()
-        if not liked:
-          liked=Likes.objects.create(user=user, article=article)
-          article.like_status=True
-          current_likes=current_likes+1
-        else:
-          liked=Likes.objects.filter(user=user, article=article).delete()
-          article.like_status=False
-          current_likes=current_likes-1
-        
-        article.like=current_likes
-        article.save()
-    else:
-            messages.warning(request, "Begenebilmek için giriş yapmak gerekir")
-            return redirect('giris')
+     if request.user.is_authenticated:
+         user=request.user
+         article=Article.objects.get(id=id)
+         current_likes=article.like
+         been_like=article.likes
+         liked=Likes.objects.filter(user=user,article=article).count()
+         if not liked:
+           liked=Likes.objects.create(user=user, article=article)
+           current_likes=current_likes+1
+           artikle_likes=request.user.username
+         else:
+           liked=Likes.objects.filter(user=user, article=article).delete()
+           current_likes=current_likes-1
+           
+         article.like=current_likes
+         article.save()
+         
+     else:
+             messages.warning(request, "Begenebilmek için giriş yapmak gerekir")
+             return redirect('giris')
     
-    return redirect(reverse('hizmet:detay',kwargs={"id":id}))
+     return redirect(reverse('hizmet:detay',kwargs={"id":id}))
 
