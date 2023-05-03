@@ -472,6 +472,14 @@ display: inline-block;
   cursor: pointer;
 }
 
+/*Form kontrol işlemi*/
+.basarli{
+  border: solid rgb(27, 183, 27) 2px !important;
+}
+.hatali{
+    border: solid red 2px !important;
+}
+
 
 
 

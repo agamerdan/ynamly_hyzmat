@@ -26,6 +26,7 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('hizmet/', include('hizmetler.urls')),
     path('avatar/', include('avatar.urls')),
+    path('sorular/', include('soruSor.urls')),
     
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

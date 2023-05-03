@@ -125,16 +125,17 @@ def artikle_likes(request, id):
          user=request.user
          article=Article.objects.get(id=id)
          current_likes=article.like
-         been_like=article.likes
+         likes=article.likes
          liked=Likes.objects.filter(user=user,article=article).count()
          if not liked:
            liked=Likes.objects.create(user=user, article=article)
            current_likes=current_likes+1
-           artikle_likes=request.user.username
+           likes=request.user.username
          else:
            liked=Likes.objects.filter(user=user, article=article).delete()
            current_likes=current_likes-1
-           
+           likes=""
+         article.likes=likes 
          article.like=current_likes
          article.save()
          

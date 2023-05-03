@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+ <form class="mb-4" method="post" action="#">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1"><h5>Soragyn Başlygy</h5></label>
+        <input type="text" class="form-control" name="soru_title">
+        <label for="exampleFormControlTextarea1"><h5>Soragyn İçerigi</h5></label>
+        <textarea name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Yorum Goş</button>
+
+</form>
+
+{% if sorusor %}
+    {% for soru in sorusor  %}
+        <div class="d-flex">
+            <div class="flex-shrink-0"><img class="avatar" src="/media/{{yorum.comment_avatar}}" alt="..." /></div>
+            <div class="ms-3">
+                <div class="fw-bold">{{soru.title}}</div>
+                    {{soru.content}}
+                <div>
+                <small class="text-muted fst-italic mb-2">{{soru.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+            </div>
+        
+                <hr>
+            </div>
+        <div>
+    {% endfor %}
+
+{% else %}
+<div>Henüz hiç bir sorag yayynlanmady</div>
+{% endif %}
+{% endblock body %}

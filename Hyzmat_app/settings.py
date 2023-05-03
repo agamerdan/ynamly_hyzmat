@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'user',
     'tinymce',
     'ckeditor',
+    'soruSor',
     
     
 ]
