@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='likes',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='begenenler', to=settings.AUTH_USER_MODEL),
+            field=models.IntegerField(default=0),
         ),
     ]

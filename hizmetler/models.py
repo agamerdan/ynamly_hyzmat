@@ -12,7 +12,7 @@ class Article(models.Model):
     content=models.TextField(verbose_name="Hyzmatynyz Barada")
     hizmet_img=models.FileField(blank=True,null=True, verbose_name="Surat Yükle")
     tarih=models.DateTimeField(auto_now_add=True)
-    like=models.IntegerField(default=0)
+    like=models.IntegerField(default=0, blank=True, null=True)
     likes = models.CharField(max_length=50, blank=True, null=True)
    
 

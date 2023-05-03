@@ -134,7 +134,7 @@ def artikle_likes(request, id):
          else:
            liked=Likes.objects.filter(user=user, article=article).delete()
            current_likes=current_likes-1
-           likes=""
+           #likes=""
          article.likes=likes 
          article.like=current_likes
          article.save()

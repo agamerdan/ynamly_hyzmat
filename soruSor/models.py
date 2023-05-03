@@ -10,7 +10,7 @@ class Sorusor(models.Model):
     title=models.CharField(max_length=50,verbose_name="Sory Temasy")
     content=models.TextField(verbose_name="Soru İçerigi")
     tarih=models.DateTimeField(auto_now_add=True)
-    like=models.IntegerField(default=0)
+    like=models.IntegerField(default=0, blank=True, null=True)
     
     def __str__(self):
         return self.title

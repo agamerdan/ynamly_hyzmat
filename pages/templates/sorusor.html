@@ -10,27 +10,65 @@
         <label for="exampleFormControlTextarea1"><h5>Soragyn İçerigi</h5></label>
         <textarea name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Yorum Goş</button>
+    <button type="submit" class="btn btn-primary mb-2">Sorag Goş</button>
 
 </form>
 
-{% if sorusor %}
-    {% for soru in sorusor  %}
-        <div class="d-flex">
-            <div class="flex-shrink-0"><img class="avatar" src="/media/{{yorum.comment_avatar}}" alt="..." /></div>
-            <div class="ms-3">
-                <div class="fw-bold">{{soru.title}}</div>
-                    {{soru.content}}
-                <div>
-                <small class="text-muted fst-italic mb-2">{{soru.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+ {% if sorular %}
+    {% for soru in sorular  %}
+        <div class="box_h">
+            <div class="disk">
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="card-mb-0">
+                        <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                         <div class="row" style=" bg-light ">
+                            <div class="flex-shrink-0 fw-bold">
+                                <img class="avatar" src="/media/{{soru.soran_avatar}}" alt="..." />
+                               {{soru.adSoyad}}
+                            </div>
+                            <div class="col-md-3">
+                                {% if soru.image %}
+                                <a href="#"><img class="card-img" src="/media/{{soru.soru_img}}" alt="Avatar"></a>
+                                {% else %}
+                                <a href="#"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                   <a href="#" class="text-bg-light"><div class="card-title"><h3>{{soru.title}}</h3></div></a> 
+                                    <a href="#" class="text-bg-light">
+                                        <p class="card-text">
+                                          {{soru.content|truncatewords:40}}
+                                        </p>
+                                    </a> 
+                                    <br>
+                                    
+                                    <p class="card-text">
+                                        <small class="text-muted">{{soru.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted"><i class="fa-sharp fa-solid fa-heart"></i></small>
+                                        <small class="text-muted">{{soru.like}}</small>
+                                    </p>
+                                   
+                                </div>
+                            </div>
+                         </div>
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
             </div>
-        
-                <hr>
-            </div>
-        <div>
+        </div>
+                    <br>
+    
     {% endfor %}
 
-{% else %}
+{% else %} 
 <div>Henüz hiç bir sorag yayynlanmady</div>
 {% endif %}
+
+
 {% endblock body %}

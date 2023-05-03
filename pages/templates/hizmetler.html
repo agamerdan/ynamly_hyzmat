@@ -59,79 +59,81 @@
    
    
    {% endif %}
-    
-    {% if articles %}
-    {% for article in articles %}
+  
+    {% if articles %} 
     <div class="box_h">
-    <div class="disk">
-     <div class="row">
-        <div class="col-md-12">
-            <div class="card-mb-0">
-                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-                 <div class="row" style=" bg-light ">
-                    <div class="col-md-3">
-                        {% if article.hizmet_img %}
-                        <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="/media/{{article.hizmet_img}}" alt="Avatar"></a>
-                        {% else %}
-                        <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
-                        {% endif %}
-                        
-                        
-                        
-                        
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                           <a href="{% url 'hizmet:detay' article.id %}" class="text-bg-light"><div class="card-title"><h3>{{article.title}}</h3></div></a> 
-                            <a href="{% url 'hizmet:detay' article.id %}" class="text-bg-light">
-                                <p class="card-text">
-                                  {{article.content|truncatewords:40}}
-                                </p>
-                            </a> 
-                            <br>
-                            <p >
-                               <b>{{article.fiyatbilgisi}}</b> 
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">{{article.tarih|date:"SHORT_DATE_FORMAT"}}</small>
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted"><i class="fa-sharp fa-solid fa-heart"></i></small>
-                                <small class="text-muted">{{article.like}}</small>
-                            </p>
-                           
+    {% for article in articles %}
+        
+           <div class="disk">
+               <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-mb-0">
+                            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                               <div class="row" style=" bg-light ">
+                                   <div class="col-md-3">
+                                        {% if article.hizmet_img %}
+                                        <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="/media/{{article.hizmet_img}}" alt="Avatar"></a>
+                                        {% else %}
+                                        <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <a href="{% url 'hizmet:detay' article.id %}" class="text-bg-light"><div class="card-title"><h3>{{article.title}}</h3></div></a> 
+                                            <a href="{% url 'hizmet:detay' article.id %}" class="text-bg-light">
+                                                <p class="card-text">
+                                                {{article.content|truncatewords:40}}
+                                                </p>
+                                            </a> 
+                                            <br>
+                                            <p >
+                                            <b>{{article.fiyatbilgisi}}</b> 
+                                            </p>
+                                            <p class="card-text">
+                                                <small class="text-muted">{{article.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+                                            </p>
+                                            <p class="card-text">
+                                                <small class="text-muted"><i class="fa-sharp fa-solid fa-heart"></i></small>
+                                                <small class="text-muted">{{article.like}}</small>
+                                            </p>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                       
                     </div>
-                 </div>
-              </div>
-            </div>
-            </div>
-            </div>
+                </div>
+           </div>
+      
+
             <br>
+           
     {% endfor %}
     
+        
         <div class="pagination">
             <span class="step-links">
-              {% if articles.has_previous %}
-                <a href="?page=1" class="previous"style="color: white; background-image: linear-gradient(to right, #940e99, #0e069b )">&laquo; Başa</a>
-                <a href="?page={{ articles.previous_page_number }}" class="previous round"style="color: white; background-image: linear-gradient(to right, #940e99,  #0e069b)">&#8249;</a>
-               
-              {% endif %}
-    
-              <span class="current">
-                 <div class="actif-number"style="color: white; background-color:#940e99">{{ articles.number }}</div> of <div class="last-page"style="color: white; background-color:#0e069b">{{ articles.paginator.num_pages }}</div>
-              </span>
-    
-              {% if articles.has_next %}
-                 <a href="?page={{ articles.next_page_number }}" class="next round"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">&#8250;</a>
-                 <a href="?page={{ articles.paginator.num_pages }}" class="next"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">Next &raquo;</a>
-               
-              {% endif %}
+                  {% if articles.has_previous %}
+                    <a href="?page=1" class="previous"style="color: white; background-image: linear-gradient(to right, #940e99, #0e069b )">&laquo; Başa</a>
+                    <a href="?page={{ articles.previous_page_number }}" class="previous round"style="color: white; background-image: linear-gradient(to right, #940e99,  #0e069b)">&#8249;</a>
+                   
+                  {% endif %}
+        
+                  <span class="current">
+                     <div class="actif-number"style="color: white; background-color:#940e99">{{ articles.number }}</div> of <div class="last-page"style="color: white; background-color:#0e069b">{{ articles.paginator.num_pages }}</div>
+                  </span>
+        
+                  {% if articles.has_next %}
+                     <a href="?page={{ articles.next_page_number }}" class="next round"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">&#8250;</a>
+                     <a href="?page={{ articles.paginator.num_pages }}" class="next"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">Sona &raquo;</a>
+                   
+                  {% endif %}
            </span>
         </div>
-   
     
-     
+     </div>
     
 
 
