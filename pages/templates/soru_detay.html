@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+{% if sorular %}
+    <div class="disk">
+        <div class="row soru">
+            <div class="col-md-12">
+                <div class="card-mb-0">
+                    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="row" style=" bg-light ">
+                            <div class="flex-shrink-0 fw-bold mb-2">
+                                <img class="avatar" src="/media/{{sorular.soran_avatar}}" alt="..." />
+                            {{sorular.adSoyad}}
+                            </div>
+                            
+                            <div class="col-md-9">
+                                <div class="card-body soru-content">
+                                   <div class="card-title"><h3>{{sorular.title}}</h3></div>
+                                   
+                                        <p class="card-text ">
+                                        {{sorular.content}}
+                                        </p>
+                                    
+                                    <br>
+                                    
+                                    <p class="card-text">
+                                        <small class="text-muted">{{sorular.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+                                    </p> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 ">
+                                {% if sorylar.image %}
+                                <a href="#"><img class="card-img" src="/media/{{sorular.soru_img}}" alt="Avatar"></a>
+                                {% else %}
+                                <a href="#"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post" action="{% url 'cevap' sorular.id %}" class="form-group mt-2 mb-3">
+        {% csrf_token %}
+        <div class="form-group">
+           
+            <textarea name="cevap_content" class="form-control" rows="3" placehYorumunuzolder="Soraga jogap Yazyn"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Jogap Yaz</button>
+    </form>
+{% else %}
+ <p>Böyla bir soru yok</p>
+{% endif %}
+
+
+{% if cevaplar %}
+{% for cevap in cevaplar %}
+<!-- Single comment-->
+   <div class="d-block">
+      <div class="flex-shrink-0 fw-bold">
+            <img class="avatar" src="/media/{{cevap.cevap_avatar}}" alt="..." />
+            {{cevap.adSoyad}}
+      </div>
+      <div class="ms-3">
+           {{cevap.cevap_content}}
+              <div>
+                 <small class="text-muted fst-italic mb-2">{{cevap.cevap_tarih|date:"SHORT_DATE_FORMAT"}}</small>
+              </div>
+       </div>
+  
+       <hr>
+   </div>
+
+{% endfor %}
+{% endif %}
+{% endblock body %}
+
+ 

@@ -15,3 +15,12 @@ class Sorusor(models.Model):
     def __str__(self):
         return self.title
 
+class Cevaplar(models.Model):
+    soru=models.ForeignKey(Sorusor, on_delete=models.CASCADE, verbose_name="cevap", related_name="cevap")
+    adSoyad=models.CharField(max_length=50)
+    cevap_content=models.TextField(verbose_name="Cevap icerigi", default="+1")
+    cevap_avatar=models.ImageField(blank=True, null=True)
+    cevap_tarih=models.DateTimeField(auto_now_add=True)
+    
+
+    

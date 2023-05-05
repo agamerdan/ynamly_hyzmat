@@ -480,6 +480,52 @@ display: inline-block;
     border: solid red 2px !important;
 }
 
+.soru{
+  background-color: #d5dad5 !important;
+  border-radius: 3%;
+}
+
+.cevap{
+  background-color: #efe7e7; 
+  border-color: #717172;
+  border-radius: 5px;
+  box-shadow: rgb(200, 200, 201);
+  margin-top: -43px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  float: right;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.begeni{
+  margin-left: 15px; 
+  max-width: 100px;
+}
+.soru-kalp{
+ 
+ display: contents;
+ padding: 4px;
+ font-size: 20px;
+ 
+ }
+.soru-chat{
+  margin-left: 15px;
+  margin-bottom: 10px;
+
+}
+.soru-begenen{
+   font-size: 16px;
+  
+}
+.cevap-yazan{
+  font-size: 16px;
+
+}
+.soru-content{
+  background-color: #e7e2f6;
+  padding: 10px;
+
+}
+
 
 
 
