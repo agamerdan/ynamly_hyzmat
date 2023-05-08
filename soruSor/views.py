@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect,reverse
 from django.contrib import messages
 from .models import Sorusor
-from .models import Cevaplar
+from .models import Cevaplar, Like
 from django.core.paginator import Paginator
 
 def soruSor(request):
@@ -36,28 +36,65 @@ def soruSor(request):
     return render(request, "sorusor.html", context)
 
 def soru_detay(request,id):
+    cevabim=False
     sorular=Sorusor.objects.filter(id=id).first()
     cevaplar=sorular.cevap.all()
+    likes=sorular.likes
+    if likes==request.user.username:
+        like_status=True
+    else:
+        like_status=False
     content={
         "sorular":sorular,
         "cevaplar":cevaplar,
+        "like_status":like_status,
+        "cevabim":cevabim,
     }
     
     return render(request, "soru_detay.html",content)
 
 def cevap(request, id):
     soru=get_object_or_404(Sorusor, id=id)
-    if(request.method=="POST"):
+    if request.method=="POST":
         if request.user.is_authenticated:
-            cevap_ekle=Cevaplar()
+            cevap_sayi=soru.cevap_sayi
             cevap_content=request.POST.get('cevap_content')
-            cevap_ekle.cevap_content=cevap_content
-            cevap_ekle.adSoyad=request.user.first_name +" "+ request.user.last_name
+            cevap_content=cevap_content
+            adSoyad=request.user.first_name +" "+ request.user.last_name
+            cevap_ekle=Cevaplar(cevap_content=cevap_content, adSoyad=adSoyad)
             if request.user.profile.avatar:
                 cevap_ekle.cevap_avatar=request.user.profile.avatar
             cevap_ekle.soru=soru
+            cevap_sayi+=1
+            soru.cevap_sayi=cevap_sayi
+            soru.save()
             cevap_ekle.save()
         else:
             messages.warning(request, "Cevaplamak için giriş yapınız")
             return redirect('giris')
-    return redirect(reverse('cevap', kwargs={"id":id}))
+    return redirect(reverse('soru:soru_detay', kwargs={"id":id}))
+
+def sorular_likes(request, id):
+     if request.user.is_authenticated:
+         user=request.user
+         soru=Sorusor.objects.get(id=id)
+         current_likes=soru.like
+         likes=soru.likes
+         liked=Like.objects.filter(user=user,sorular=soru).count()
+         if not liked:
+           liked=Like.objects.create(user=user, sorular=soru)
+           current_likes=current_likes+1
+           likes=request.user.username
+         else:
+           liked=Like.objects.filter(user=user, sorular=soru).delete()
+           current_likes=current_likes-1
+           likes=""
+         soru.likes=likes 
+         soru.like=current_likes
+         soru.save()
+         
+     else:
+             messages.warning(request, "Begenebilmek için giriş yapmak gerekir")
+             return redirect('giris')
+    
+     return redirect(reverse('soru:soru_detay',kwargs={"id":id}))

@@ -11,3 +11,4 @@ form.numb.addEventListener('keyup',function (e) {
         console.log("yanliş");
     }
 })
+

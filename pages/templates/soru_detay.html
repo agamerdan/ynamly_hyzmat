@@ -27,6 +27,19 @@
                                         <small class="text-muted">{{sorular.tarih|date:"SHORT_DATE_FORMAT"}}</small>
                                     </p> 
                                 </div>
+                                <div class="d-inline-block">
+                                    <form action="{%url 'soru:sorular_likes' sorular.id %}">
+                                    {% csrf_token %}
+                                    {% if like_status %}
+                                       <button type="submit"name="blog_id"   class="heart_btnC"><i class="fa-sharp fa-solid fa-heart"></i> </button> 
+                                    {% else %}
+                                       <button type="submit"name="blog_id"   class="heart_btnC_else"><i class="fa-sharp fa-solid fa-heart"></i></button> 
+                                    {% endif %}
+                                        
+                                </form> 
+                                <small class="begeni_sayi">{{sorular.like}}</small>
+                                </div>
+                                
                             </div>
 
                             <div class="col-md-3 ">
@@ -36,6 +49,7 @@
                                 <a href="#"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
                                 {% endif %}
                             </div>
+                            
 
                         </div>
                     </div>
@@ -43,13 +57,14 @@
             </div>
         </div>
     </div>
-    <form method="post" action="{% url 'cevap' sorular.id %}" class="form-group mt-2 mb-3">
+    <form method="post" action="{% url 'soru:cevap' sorular.id %}" class="form-group mt-2 mb-3">
         {% csrf_token %}
         <div class="form-group">
            
-            <textarea name="cevap_content" class="form-control" rows="3" placehYorumunuzolder="Soraga jogap Yazyn"></textarea>
+            <textarea id="cevap_text" name="cevap_content" class="form-control" rows="3" placehYorumunuzolder="Soraga jogap Yazyn"></textarea>
+            <p class="mt-2 text text-danger info_text">.Jogabynyz in az 5 harply bir sözden az bolmaz</p>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Jogap Yaz</button>
+        <button disabled id="cevap_btn" type="submit" class="btn btn-primary mb-2">Jogap Yaz</button>
     </form>
 {% else %}
  <p>Böyla bir soru yok</p>
@@ -72,10 +87,17 @@
        </div>
   
        <hr>
+       {% if cevabim %}
+       <p>tamam</p>
+       
+       {% else %}
+       {% endif %}
    </div>
 
 {% endfor %}
 {% endif %}
+
+<script src="{% static 'js/cevap.js' %}"></script>
 {% endblock body %}
 
  

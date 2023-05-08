@@ -456,14 +456,37 @@ display: inline-block;
   background: transparent;
   border: none;
   outline: none;
-  font-size: 50px;
+  font-size: 25px;
   color: rgb(214, 17, 17);
 }
 .heart_btn_else{
   background: transparent;
   border: none;
   outline: none;
-  font-size: 50px;
+  font-size: 25px;
+  color: rgb(180, 173, 173);
+}
+
+.heart_btnC{
+  margin: 4px;
+  padding: 0;
+  display: flex;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  color: rgb(214, 17, 17);
+}
+.heart_btnC_else{
+  margin-top: 5px;
+  padding: 0;
+  display: flex;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 25px;
   color: rgb(180, 173, 173);
 }
 
@@ -524,6 +547,13 @@ display: inline-block;
   background-color: #e7e2f6;
   padding: 10px;
 
+}
+
+.begeni_sayi{
+  position: relative;
+  top:-27px;
+  margin-left: 32px;
+  font-size: 18px;
 }
 
 

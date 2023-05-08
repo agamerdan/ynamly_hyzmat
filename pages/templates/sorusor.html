@@ -4,16 +4,17 @@
  <form class="mb-4" method="post" action="#">
     {% csrf_token %}
     
-    <div class="form-group">
+    <div class="form-group soruForm">
         <label for="exampleFormControlTextarea1"><h5>Soragyn Başlygy</h5></label>
         <input type="text" class="form-control" name="soru_title">
         <label for="exampleFormControlTextarea1"><h5>Soragyn İçerigi</h5></label>
-        <textarea name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
+        <textarea id="content" name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
+        <p class="mt-2 tex text-danger info-text " >.Soragynyz in az 5 harply bir söz bolmalydyr</p>
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Sorag Goş</button>
+    <button id="sorag" disabled type="submit" class="btn btn-primary mb-2">Sorag Goş</button>
 
 </form>
-
+ 
  {% if sorular %}
    <div class="box_h">
         {% for soru in sorular  %}
@@ -37,8 +38,8 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="card-body soru-content">
-                                        <a href="{% url 'soru_detay' soru.id %}" class="text-bg-light"><div class="card-title"><h3>{{soru.title}}</h3></div></a> 
-                                            <a href="{% url 'soru_detay' soru.id %}" class="text-bg-light">
+                                        <a href="{% url 'soru:soru_detay' soru.id %}" class="text-bg-light"><div class="card-title"><h3>{{soru.title}}</h3></div></a> 
+                                            <a href="{% url 'soru:soru_detay' soru.id %}" class="text-bg-light">
                                                 <p class="card-text ">
                                                 {{soru.content|truncatewords:40}}
                                                 </p>
@@ -53,11 +54,13 @@
                                                   <small class="text-muted"><i class="fa-sharp fa-solid fa-heart soru-kalp"></i></small>
                                                   <small class="text-muted soru-begenen">{{soru.like}}</small>
                                                   <small class="text-muted"><i class="fa fa-commenting fa-lg soru-chat" aria-hidden="true"></i></small>
-                                                  <small class="text-muted cevap-yazan">{{soru.like}}</small>
+                                                  <small class="text-muted cevap-yazan">{{soru.cevap_sayi}}</small>
                                                 </div>
                                                 <div class="card-text cevap">
-                                                  <a href="{% url 'soru_detay' soru.id %}" class="btn">Cevapla</a>
+                                                  <a href="{% url 'soru:soru_detay' soru.id %}" class="btn">Cevapla</a>
                                                 </div>
+                                              
+                                                
                                             </p>
                                             
                                            
@@ -100,5 +103,5 @@
 <div>Henüz hiç bir sorag yayynlanmady</div>
 {% endif %}
 
-
+<script src="{% static 'js/soru.js' %}"></script>
 {% endblock body %}
