@@ -45,8 +45,18 @@
   }
 
  /* logo */
+ @media screen and (max-width: 300px) {
+  .resim{
+    width: 50px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    
+  }
+  
+}
+
  .resim{
-    width: 110px;
+    width: 90px;
     margin-top: -10px;
     margin-bottom: -10px;
     
@@ -161,9 +171,11 @@ hr {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
+  
   .cancelbtn, .signupbtn {
      width: 100%;
   }
+  
 }
 
 
@@ -555,6 +567,42 @@ display: inline-block;
   margin-left: 32px;
   font-size: 18px;
 }
+.prof{
+  position: relative;
+  margin-left: auto;
+}
+.prof, i:hover{
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
 
 
 

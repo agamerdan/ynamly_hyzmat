@@ -1,7 +1,9 @@
 const text=document.getElementById('content')
 const buton=document.getElementById('sorag')
 const info_text=document.querySelector('.info-text')
-console.log(info_text)
+const btn=document.querySelector('.btn')
+const soru_image=document.getElementById('soru_image')
+console.log(btn)
 text.addEventListener('keyup',function(e){
      girilen=e.target.value
      text.style.outline='none'
@@ -18,4 +20,9 @@ text.addEventListener('keyup',function(e){
         buton.disabled=true
         info_text.classList.remove('d-none')
      }
+})
+
+btn.addEventListener('click',function(){
+    soru_image.classList.remove('d-none')
+    btn.classList.add('d-none')
 })

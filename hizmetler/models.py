@@ -10,7 +10,7 @@ class Article(models.Model):
     title=models.CharField(max_length=50,verbose_name="Hyzmatynyzyn Ady")
     fiyatbilgisi=models.CharField(max_length=50, verbose_name="Hyzmatynyzyn Bahasy")
     content=models.TextField(verbose_name="Hyzmatynyz Barada")
-    hizmet_img=models.FileField(blank=True,null=True, verbose_name="Surat Yükle")
+    hizmet_img=models.FileField(blank=True,null=True, verbose_name="Surat Yükle", upload_to="hizmet")
     tarih=models.DateTimeField(auto_now_add=True)
     like=models.IntegerField(default=0, blank=True, null=True)
     likes = models.CharField(max_length=50, blank=True, null=True)

@@ -9,6 +9,7 @@ class Sorusor(models.Model):
     adSoyad=models.CharField(max_length=50, verbose_name="Ad we Familyanyz")
     title=models.CharField(max_length=50,verbose_name="Sory Temasy")
     content=models.TextField(verbose_name="Soru İçerigi")
+    soru_image=models.FileField(blank=True, null=True)
     tarih=models.DateTimeField(auto_now_add=True)
     like=models.IntegerField(default=0, blank=True, null=True)
     likes=models.CharField(max_length=50, blank=True, null=True)

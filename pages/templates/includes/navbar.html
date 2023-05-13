@@ -1,5 +1,31 @@
 {% load static %}
-
+<style>
+  .profmenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .profmenu a {
+    
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .profmenu a:hover {
+    background-color: #ddd;
+  }
+  
+  .Profbtn:hover .profmenu {
+    display: block;
+  }
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664 )" >
   <a class="navbar-brand"style="margin-left:4%;" href="{% url 'index' %}"> <img class="resim" src="{% static 'resim/logoo.png' %}" alt="logo"></a>
@@ -12,11 +38,11 @@
 
           </button>
 
-  <div class="container-fluid">
+  <div class="container">
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'index' %}" style="color: white; font-size: 120%;  font-weight:bold; margin-right:30px;">Baş_Sahypa</a>
@@ -31,12 +57,14 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'hizmet:hizmet_ekle' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px;">Hyzmat_Goş</a>
         </li>
-
-        
+</div>
+       </ul>       
         
 {% if request.user.is_authenticated %}
-         <ul class="navbar-nav ml-auto ml-2 mb-2 mb-lg-0" >
-           <li class="nav-item mt-2">
+<div class="Profbtn">
+  <ul class="navbar-nav mb-2 mb-lg-0 prof" >
+          
+           <li class="nav-item mt-2 ">
             
             {% if request.user.profile.avatar %}
             
@@ -45,10 +73,18 @@
             {% endif %}
              
            </li>
-          <li class="nav-item mr-3 ">
-            <a class="nav-link active " aria-current="page" href="{% url 'cikis' %}" style="color: white; font-size: 120%; font-weight:bold; margin-right:30px; ">Ulgamdan_Çık</a>
+          <li class="nav-item  text text-light mt-2 ml-2">
+            {{user.username}}
           </li>
         </ul>
+  <div class="profmenu">
+    <a href="{% url 'cikis' %}">Ulgamdan Çyk</a>
+    <a href="#" class="edtitProf">Profilini Düzelt</a>
+    
+  </div>
+</div> 
+
+         
         
            
       {%else%}
@@ -64,23 +100,46 @@
 
          
       {% endif %}
-      </ul>
+      
     </div>
-  </div>
-      
-        
-      
-      
-      
-   
 </nav>
-<div id="text" class="not-visible">
-    <div class="dropdown-content">
-      <a href="#">profile</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate"  method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="/media/{{request.user.profile.avatar}}" alt="Avatar" class="avatarProfil">
     </div>
+
+    <div class="container">
+      <label for="fname"><b>Ad</b></label>
+      <input type="text" placeholder="Merdan" name="fname" required>
+
+      <label for="psw"><b> Familya</b></label>
+      <input type="text" placeholder="Babayev" name="lname" required>
+
+      <label for="uname"><b> Hesap Ady</b></label>
+      <input type="text" placeholder="MerdanB" name="uname" required>
+
+      <label for="psw"><b> Parol</b></label>
+      <input type="password" placeholder="Parol" name="psw" required>
+
+      <label for="psw_confirim"><b> Parol Gaytala</b></label>
+      <input type="password" placeholder="Parol" name="psw_confirim" required><br>
+    
+      <label for="filename"><b>Profil suratyny yükle</b></label>
+      <input type="file" id="myFile" name="filename">
+        
+      <button type="submit">Düzelt</button>
+      
+    </div>
+  </form>
 </div>
+
 
 <script>
   function myFunction(x) {
@@ -88,3 +147,4 @@
   }
   
   </script>
+  <script src="{% static 'js/navbar.js' %}"></script>

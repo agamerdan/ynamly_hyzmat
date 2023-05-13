@@ -1,15 +1,18 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block body %}
- <form class="mb-4" method="post" action="#">
+ <form class="mb-4" method="post" action="#" enctype="multipart/form-data">
     {% csrf_token %}
-    
+    {{ form.media }}
     <div class="form-group soruForm">
         <label for="exampleFormControlTextarea1"><h5>Soragyn Başlygy</h5></label>
         <input type="text" class="form-control" name="soru_title">
         <label for="exampleFormControlTextarea1"><h5>Soragyn İçerigi</h5></label>
         <textarea id="content" name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
         <p class="mt-2 tex text-danger info-text " >.Soragynyz in az 5 harply bir söz bolmalydyr</p>
+        <input id="soru_image" type="file" class="d-none"name="soru_image">
+        <a href="#" class="btn"><i class="fa fa-picture-o fa-5x" aria-hidden="true" ></i></a>
+        <small class="text text-secondary mb-5">Soragnız bilen baglanşykly surat bar bolsa yüklapbilersiniz</small>
     </div>
     <button id="sorag" disabled type="submit" class="btn btn-primary mb-2">Sorag Goş</button>
 
@@ -31,7 +34,7 @@
                                     </div>
                                     <div class="col-md-3 ">
                                         {% if soru.image %}
-                                           <img class="card-img" src="/media/{{soru.soru_img}}" alt="Avatar">
+                                           <img class="card-img" src="/media/{{soru.soru_image}}" alt="Avatar">
                                         {% else %}
                                            <img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar">
                                         {% endif %}

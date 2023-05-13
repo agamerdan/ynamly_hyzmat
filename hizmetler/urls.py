@@ -5,8 +5,6 @@ from . import views
 app_name="hizmet"
 
 urlpatterns = [
-    
-    
     path('hizmetlerim/', views.hizmetlerim, name="hizmetlerim"),
     path('hizmet_ekle/', views.hizmet_ekle, name="hizmet_ekle"),
     path('yorum/<int:id>', views.yorum, name="yorum"),
@@ -15,7 +13,4 @@ urlpatterns = [
     path('hizmetlerim/duzelt/<int:id>', views.duzelt, name="duzelt"),
     path('hizmetlerim/poz/<int:id>', views.poz, name="poz"),
     path('hizmetler/', views.hizmetler, name="hizmetler"),
-    
-    
-   
 ]

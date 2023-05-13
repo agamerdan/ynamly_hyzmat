@@ -7,12 +7,14 @@ from django.core.paginator import Paginator
 def soruSor(request):
     
     sorusor=Sorusor()
-    if request.method=='POST':
+    if request.method=='POST' or request.method=="FILES":
         if request.user.is_authenticated:
             title=request.POST.get('soru_title')
             content=request.POST.get('soru_content')
+            soru_image=request.POST.get('soru_image')
             sorusor.title=title
             sorusor.content=content
+            sorusor.soru_image=soru_image
             sorusor.author=request.user
             sorusor.adSoyad=request.user.first_name +" "+ request.user.last_name
             if request.user.profile.avatar:
