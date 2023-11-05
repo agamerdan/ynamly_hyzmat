@@ -465,16 +465,12 @@ display: inline-block;
 /*heart_btn*/
 
 .heart_btn{
-  background: transparent;
-  border: none;
-  outline: none;
+  
   font-size: 25px;
   color: rgb(214, 17, 17);
 }
 .heart_btn_else{
-  background: transparent;
-  border: none;
-  outline: none;
+  
   font-size: 25px;
   color: rgb(180, 173, 173);
 }

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'hizmetler',
     'django_cleanup.apps.CleanupConfig',
-    'avatar',
+    
     'user',
     'tinymce',
     'ckeditor',

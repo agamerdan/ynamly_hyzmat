@@ -27,7 +27,9 @@ def giris(request):
 
 
 def yazil(request):
+    print("calisti")
     if request.method=="POST" or request.method=="FILES":
+        
         bilgiler=request.POST
         ad=bilgiler.get("fname")
         soyad=bilgiler.get("lname")
@@ -37,7 +39,7 @@ def yazil(request):
         avatar=request.FILES.get("filename")
         if avatar:
             print("yüklendi")
-        
+            
         if len(ad)<3 or len(soyad)<3 or len(uname)<3 or len(pasword)<3:
             messages.error(request, "İn az 3 harp girip bilersiniz")
             return redirect("yazil")
@@ -49,7 +51,7 @@ def yazil(request):
             user.first_name=ad
             user.last_name=soyad
             user.username=uname
-            
+                
             profile, profil_created=Profile.objects.get_or_create(user=user)
             profile.avatar=avatar
             user.set_password(pasword)

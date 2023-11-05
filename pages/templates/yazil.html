@@ -39,14 +39,15 @@ button:hover {
 
 
 /* Center the image and position the close button */
-.imgcontainer {
+.imgbox {
   text-align: center;
   margin: 24px 0 12px 0;
   position: relative;
 }
 
-img.Avatar {
-  width: 30%;
+.Avatar {
+  width: 100px;
+  height: 60 !important;
   border-radius: 50%;
 }
 
@@ -59,6 +60,7 @@ span.psw {
 
 /* The Modal (background) */
 .ana {
+  display:none;
   margin-top: 10px; 
   margin: auto;
   width: 50%; /* Full width */
@@ -88,37 +90,11 @@ span.psw {
 </style>
 
 <br>
- <div  class="ana">
-<div class="imgcontainer">
-      
-      <img src="{% static 'resim/user.png' %}" alt="Avatar" class="Avatar">
-    </div>
  
-  <form  method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.media }}
-      <label for="fname"><b>Ad</b></label>
-      <input type="text" placeholder="Merdan" name="fname" required>
 
-      <label for="psw"><b> Familya</b></label>
-      <input type="text" placeholder="Babayev" name="lname" required>
-
-      <label for="uname"><b> Hesap Ady</b></label>
-      <input type="text" placeholder="MerdanB" name="uname" required>
-
-      <label for="psw"><b> Parol</b></label>
-      <input type="password" placeholder="Parol" name="psw" required>
-
-      <label for="psw_confirim"><b> Parol Gaytala</b></label>
-      <input type="password" placeholder="Parol" name="psw_confirim" required><br>
-      
-      <label for="filename"><b>Profil suratyny yükle</b></label>
-      <input type="file" id="myFile" name="filename">
-        
-      <button type="submit">Hesap Aç</button>
-      </form>
-    </div>
+    <script src="{% static 'js/yazil.js' %}"></script>
 {% endblock body %}
+
 
  
 

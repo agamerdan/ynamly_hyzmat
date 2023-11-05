@@ -93,7 +93,7 @@
               <a class="nav-link active " aria-current="page" href="{% url 'giris' %}" style="color: white; font-size: 120%;margin-right:30px; font-weight:bold; ">Gir</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link active " aria-current="page" href="{% url 'yazil' %}" style="color: white; font-size: 120%; margin-right:30px;float: right ; font-weight:bold;  ">Hasap_Aç</a>
+              <a class="nav-link active yazil" aria-current="page" href="#" style="color: white; font-size: 120%; margin-right:30px;float: right ; font-weight:bold;  ">Hasap_Aç</a>
             </li>
       </ul>
       
@@ -104,7 +104,7 @@
     </div>
 </nav>
 
-
+{% comment %} Düzenle sayfasi {% endcomment %}
 <div id="id01" class="modal">
   
   <form class="modal-content animate"  method="post">
@@ -132,13 +132,50 @@
       <input type="password" placeholder="Parol" name="psw_confirim" required><br>
     
       <label for="filename"><b>Profil suratyny yükle</b></label>
-      <input type="file" id="myFile" name="filename">
+      <input type="file" id="myimage" name="filename">
         
       <button type="submit">Düzelt</button>
       
     </div>
   </form>
 </div>
+
+
+{% comment %} Kayıt ol sayfası {% endcomment %}
+
+<div  class="modal" id="id02">
+  
+
+<form class="modal-content animate" enctype="multipart/form-data" id="post-form">
+    {% csrf_token %}
+    {{ form.media }}
+    <div class="imgbox">
+      
+      <img src="{% static 'resim/user.png' %}" alt="Avatar" class="avatarProfil">
+      <h5></h5>
+    </div>
+        
+    <label for="myFile"><b class="profiltext" >Profil suratyny yükle</b></label>
+    <input type="file" id="myFile" name="myFile">
+
+    <label for="fname"><b>Ad</b></label>
+    <input type="text" placeholder="Merdan" id="fname" name="fname" required>
+
+    <label for="lname"><b> Familya</b></label>
+    <input type="text" placeholder="Babayev" id="lname" name="lname" required>
+
+    <label for="uname"><b> Hesap Ady</b></label>
+    <input type="text" placeholder="MerdanB" id="uname" name="uname" required>
+
+    <label for="psw"><b> Parol</b></label>
+    <input type="password" placeholder="Parol" id="psw" name="psw" required>
+
+    <label for="psw_confirim"><b> Parol Gaytala</b></label>
+    <input type="password" placeholder="Parol" id="psw_confirim" name="psw_confirim" required><br>
+    
+    <button type="submit">Hesap Aç</button>
+    </form>
+  </div>
 
 
 <script>
@@ -148,3 +185,4 @@
   
   </script>
   <script src="{% static 'js/navbar.js' %}"></script>
+  <script src="{% static 'js/jquery-3.6.3.min.js'%}"></script>

@@ -4,33 +4,47 @@
 {% block body %}
 
 <div class="row">
-    <div class="col-lg-8">
-        <!-- Post content-->
+    <div class="col-lg-12">
+        
         <article>
-            <!-- Post header-->
+            
             <header class="mb-4">
-                <!-- Post title-->
+               
                 <h1 class="fw-bolder mb-1">{{hyzmat.title}}</h1>
-                <!-- Post meta content-->
+                
                 <div class="text-muted fst-italic mb-2">{{hyzmat.tarih|date:"SHORT_DATE_FORMAT"}}</div>
-                <!-- Post categories-->
+               
                 <p><b>{{hyzmat.adSoyad}}</b></p>
                   <br>
                   <p><b>{{hyzmat.fiyatbilgisi}}</b></p>
             </header>
-            <!-- Preview image figure-->
+            
             {% if hyzmat.hizmet_img %}
             <figure class="mb-4"><img  class="img-fluid rounded card-img" src="/media/{{hyzmat.hizmet_img}}" alt="..." ></figure>
         
             {% endif %}
 
             
-            <!-- Post content-->
+           
             <section class="mb-5">
               <p class="fs-5 mb-4">{{hyzmat.content}}</p>
             </section>
+            
+            <!-- Begeni form-->
+           
+                <form action="{%url 'hizmet:artikle_likes' hyzmat.id %}">
+                      {% csrf_token %}
+                      {% if like_status %}
+                         <button type="submit" class="hidden_btn" name="blog_id" hidden  ></button> <i class="fa-sharp fa-solid fa-heart heart_btn" onclick="ClickHeart()"></i>
+                      {% else %}
+                         
+                         <button type="submit" class="hidden_btn" name="blog_id" hidden  ></button> <i class="fa-sharp fa-solid fa-heart heart_btn_else" onclick="ClickHeart()"></i>
+                      {% endif %}
+                          <small>{{hyzmat.like}}</small>
+                </form> 
+              
         </article>
-        <!-- Comments section-->
+        
         
         <section class="mb-5">
             <div class="card bg-light">
@@ -70,34 +84,30 @@
                 
             </div>
         </section>
-    </div>
+   
         
                 
    
                     <!-- Comment with nested comments-->
                     
     <!-- Side widgets-->
-    <div class="col-lg-4">
+  
         <!-- Search widget-->
         <div class="card mb-4 ">
            
             <a href="#" class="btn btn-dark">Hyzmat Berene Yaz</a>
         </div>
-        <div class="card mb-4 ">
-          <form action="{%url 'hizmet:artikle_likes' hyzmat.id %}">
-                {% csrf_token %}
-                {% if like_status %}
-                   <button type="submit"name="blog_id"   class="heart_btn"><i class="fa-sharp fa-solid fa-heart"></i></button> 
-                {% else %}
-                   <button type="submit"name="blog_id"   class="heart_btn_else"><i class="fa-sharp fa-solid fa-heart"></i></button> 
-                {% endif %}
-                    <small>{{hyzmat.like}}</small>
-          </form> 
-        </div>
+        
         
         
     </div>
 </div>
+<script>
+    const btn=document.querySelector('.hidden_btn')
+   function ClickHeart(){
+       btn.click();
+    }
+</script>
 
 
 {% endblock body %}
