@@ -35,10 +35,12 @@
                 <form action="{%url 'hizmet:artikle_likes' hyzmat.id %}">
                       {% csrf_token %}
                       {% if like_status %}
-                         <button type="submit" class="hidden_btn" name="blog_id" hidden  ></button> <i class="fa-sharp fa-solid fa-heart heart_btn" onclick="ClickHeart()"></i>
+                         <button type="submit" class="hidden_btn" name="blog_id" hidden  ></button> 
+                         <i class="fa-sharp fa-solid fa-heart heart_btn" onclick="ClickHeart()"></i>
                       {% else %}
                          
-                         <button type="submit" class="hidden_btn" name="blog_id" hidden  ></button> <i class="fa-sharp fa-solid fa-heart heart_btn_else" onclick="ClickHeart()"></i>
+                         <button type="submit" class="hidden_btn" name="blog_id" hidden  ></button> 
+                         <i class="fa-sharp fa-solid fa-heart heart_btn_else" onclick="ClickHeart()"></i>
                       {% endif %}
                           <small>{{hyzmat.like}}</small>
                 </form> 

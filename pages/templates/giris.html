@@ -5,24 +5,96 @@
 
 {% block body %}
 
+<style>
+    * {box-sizing: border-box;}
 
+/* Style the input container */
+.input-container {
+  display: flex;
+  max-width: 700px;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+  margin-top: 8px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  
+  color: white;
+  min-width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+/* Style the input fields */
+.input-field {
+  width: 100%;
+  padding: 15px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.gbtn {
+ 
+  color: white;
+  padding: 10px ;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+  opacity: 0.9;
+}
+
+.gbtn:hover {
+  opacity: 1;
+}
+.goz{
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  top: 25px;
+  right: 25px;
+  padding-right: 1px;
+}
+.baslik{
+  background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+  font-weight: 100px;
+}
+
+</style>
 <div class="container">
-    <h1>Ulgama Gir</h1>
+    <h1 class="baslik">Ulgama Gir</h1>
     <hr>
-    <p>Boş Bolan Yerleri Doldurun we Gir Dügmesine Basın</p>
+    <p style="color: rgb(141, 125, 4);">Boş Bolan Yerleri Doldurun we Gir Dügmesine Basın</p>
     <hr>
       
-           <form method="post">
+           <form method="post" style="max-width:700px;margin:auto">
             
-               <b>
-                     {% csrf_token %}
-                    {{form|crispy}}
-                </b>
+                {% csrf_token %}
+                <div class="input-container">
+                  <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+                  <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                </div>
+              
+                <div class="input-container">
+                  <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+                  <input class="input-field" type="password" placeholder="Password" name="psw">
+                  <i class="fa fa-eye goz"></i>
+                </div>
+              
+                <button type="submit" class="gbtn " style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">Giriş</button>
+              </form>
                 
                  
            
-                <button type="submit" class="btn btn-primary"> Ulgama Gir</button>
-            </form> 
+             
 
             
   
