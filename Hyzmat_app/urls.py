@@ -24,7 +24,6 @@ from user import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
-     path('/yazil', views.yazil, name="yazil"),
     path('user/', include('user.urls')),
     path('hizmet/', include('hizmetler.urls')),
     path('avatar/', include('avatar.urls')),

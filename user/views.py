@@ -6,28 +6,26 @@ from django.contrib import messages
 from .models import Profile
 
 def giris(request):
-    
-    form=LoginForm(request.POST or None)
-    context={
-        "form":form
-    }
-    if form.is_valid():
-            username=form.cleaned_data.get("username")
-            password=form.cleaned_data.get("password")
-            user=authenticate(username=username,password=password)
-            if user is None:
-                messages.warning(request,"Ulgamda Açılan Hasabynyz Yok")
-                return render(request,'giris.html',context)
-            messages.success(request,"Ulgama Girmeyi Başardynyz")
-            login(request,user)
-            return redirect('index')
-    return render(request, 'giris.html',context)
+    if request.method=='POST':
+       
+        form=request.POST
+        if form:
+             username=form.get("usrnm")
+             password=form.get("psw")
+             user=authenticate(username=username,password=password)
+             if user is None:
+                 messages.warning(request,"Ulgamda Açılan Hasabynyz Yok")
+                 return render(request,'giris.html')
+             messages.success(request,"Ulgama Girmeyi Başardynyz")
+             login(request,user)
+             return redirect('index')
+    return render(request, 'users/giris.html')
   
 
 
 
-def yazil(request):
-    print("calisti")
+def Register(request):
+    
     if request.method=="POST" or request.method=="FILES":
         
         bilgiler=request.POST
@@ -63,7 +61,7 @@ def yazil(request):
         else:
             messages.warning(request, "Bu Hesap adı bln giriş yapıldı, Başka hesap açyn ")
             return redirect("yazil.html")
-    return render (request, "yazil.html")
+    return render (request, "users/register.html")
         
    
 

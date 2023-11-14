@@ -80,13 +80,13 @@
                 {% csrf_token %}
                 <div class="input-container">
                   <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-                  <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                  <input class="input-field" type="text" placeholder="Username" name="usrnm" required>
                 </div>
               
                 <div class="input-container">
                   <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-                  <input class="input-field" type="password" placeholder="Password" name="psw">
-                  <i class="fa fa-eye goz"></i>
+                  <input class="input-field psw" type="password" placeholder="Password" name="psw" required>
+                  <i class="fa fa-eye-slash goz" onclick="ParolaControl()"></i>
                 </div>
               
                 <button type="submit" class="gbtn " style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">Giriş</button>
@@ -100,4 +100,21 @@
   
  
 </div>
+<script>
+  const btn=document.querySelector('.goz');
+  const password=document.querySelector('.psw')
+  function ParolaControl(){
+    const paswordType=password.getAttribute('type');
+    if(paswordType === 'password'){
+      btn.classList.remove('fa-eye-slash')
+      btn.classList.add('fa-eye')
+      password.setAttribute('type','text')
+    }else{
+      btn.classList.remove('fa-eye')
+      btn.classList.add('fa-eye-slash')
+      password.setAttribute('type','password')
+    }
+    
+  }
+</script>
 {% endblock  %}

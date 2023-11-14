@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Document</title>
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+      * {box-sizing: border-box;}
+      
+      .input-container {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 5px;
+      }
+      
+      .icon {
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+        min-width: 50px;
+        text-align: center;
+      }
+      
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+      }
+      
+      .input-field:focus {
+        border: 2px solid dodgerblue;
+      }
+      
+      /* Set a style for the submit button */
+      .btn {
+        
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        cursor: pointer;
+        width: 25%;
+        opacity: 0.9;
+      }
+      
+      .btn:hover {
+        opacity: 1;
+      }
+
+    /* Center the avatar image inside this container */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  } 
+
+  /* Avatar image */
+  img.avatar {
+    width: 55%;
+    max-height: 250px;
+    border-radius: 50%;
+  }
+
+  
+
+</style>
+</head>
+<body>
+  <form method="post" style="max-width:500px;margin:auto">
+    <h2>Üye Bol</h2>
+
+    <div class="imgcontainer" >
+      <div class="avatarSec" onclick="ResimSec()" >
+          <i class="fa fa-user fa-5x" aria-hidden="true" style="padding:15px; background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+          <p>Surat yükle</p>
+          <input type="file" accept="image/*" hidden class="file" >
+      </div>
+      
+      
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+      <input class="input-field" type="text" placeholder="Ad" name="firstname" required  >
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+      <input class="input-field" type="text" placeholder="Familya" name="lastname" required>
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+      <input class="input-field" type="text" placeholder="Ulanyjy Ad" name="usrnm" required>
+    </div>
+  
+    <div class="input-container">
+      <i class="fa fa-envelope icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+      <input class="input-field" type="text" placeholder="Email" name="email" required>
+    </div>
+    
+    <div class="input-container">
+      <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+      <input class="input-field" type="password" placeholder="Parola" name="psw" required>
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+      <input class="input-field" type="password" placeholder="Parola Gaytala" name="pswConfirm" required>
+    </div>
+  
+    <button type="submit" class="btn" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">Register</button>
+  </form>
+  
+  <script>
+    const file=document.querySelector('.file');
+    const avatarSec= document.querySelector('.avatarSec')
+    avatarSec.addEventListener('mouseover', function(){
+      avatarSec.style.cursor="pointer";
+    })
+
+    function ResimSec(){
+      file.click();
+      file.addEventListener('change', function(e){
+        avatarSec.innerHTML="";
+        
+        [...this.files].map(file => {
+          const reader = new FileReader();
+          reader.addEventListener('load', function(){
+            console.log(this.result);
+			      avatarSec.innerHTML=`<div class="cerceve" style="padding:0px; background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"><img src="${this.result}" class="avatar" ></div>` 
+          })
+          reader.readAsDataURL(file);
+          })
+        
+      })
+    }
+
+  </script>
+    
+</body>
+</html>
+    
+    
+    
+    
