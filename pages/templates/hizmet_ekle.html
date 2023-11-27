@@ -12,7 +12,8 @@
   }
   
 </style>
-<h1>Hyzmat Goş</h1>
+<div class="container">
+  <h1>Hyzmat Goş</h1>
 <hr>
 <a href="{% url 'hizmet:hizmetlerim' %}"><p>Önceki hyzmatlarym</p></a>
 {% if request.user.is_authenticated %}
@@ -46,3 +47,5 @@
 
 <script src="{% static 'js/main.js' %}"></script>
 {% endblock body  %}
+</div>
+

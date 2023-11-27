@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
     <title>Document</title>
     <style>
       body {font-family: Arial, Helvetica, sans-serif;}
@@ -18,6 +19,11 @@
         margin-bottom: 15px;
         padding: 5px;
       }
+      .input-container1 {
+        display: flex;
+        max-width: 525px;
+        margin-bottom: 15px;
+      }
       
       .icon {
         padding: 10px;
@@ -28,7 +34,7 @@
       }
       
       .input-field {
-        width: 100%;
+        width: 88%;
         padding: 10px;
         outline: none;
       }
@@ -65,56 +71,135 @@
     border-radius: 50%;
   }
 
+  .baslik{
+    background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+    font-weight: 100px;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .logo{
+    max-width: 150px;
+    position: relative;
+    margin-left: 50px;
+    
+  }
+  .info-text{
+      text-align: center;
+      margin-top: 50px;
+  }
+.form-group{
   
+  max-width: 520px;
+  padding: 0px;
+  margin: auto;
+  border: #09090c solid 1px;
+  background-color: #e4e4ee;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.goz{
+  float: right;
+  position: relative;
+  height: 100%;
+  top: 15px;
+  right: 25px;
+  
+}
+.goz1{
+  float: right;
+  position: relative;
+  height: 100%;
+  top: 15px;
+  right: 25px;
+  
+}
 
 </style>
 </head>
 <body>
-  <form method="post" style="max-width:500px;margin:auto">
-    <h2>Üye Bol</h2>
+  
+  
+        
+        {% if messages %}
+        <div class="container bg-light">
+          <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                
+                <strong>{{ message }}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            
+            {% endfor %}
+          </div>
 
-    <div class="imgcontainer" >
-      <div class="avatarSec" onclick="ResimSec()" >
-          <i class="fa fa-user fa-5x" aria-hidden="true" style="padding:15px; background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-          <p>Surat yükle</p>
-          <input type="file" accept="image/*" hidden class="file" >
+        </div>
+     
+       {% endif %}
+      
+      
+     
+   
+<div class="container">
+ <a href="{% url 'index' %}"><img src="{% static 'resim/Resim3.png' %}" class="logo" alt=""></a>
+  <div class="baslik">
+    
+  
+  </div>
+  <div class="form-group">
+    <form method="post" style="max-width:500px;margin:auto" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="imgcontainer" >
+        <div class="avatarSec" onclick="ResimSec()" >
+            <i class="fa fa-user fa-5x" aria-hidden="true" style="padding:15px; "></i>
+            <p>Surat yükle</p>
+            
+        </div>
+        <input type="file" accept="image/*" multiple hidden class="file" name="filename" >
+        
+      </div>
+
+      <div class="input-container">
+        <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+        <input class="input-field" type="text" placeholder="Ad" name="fname" required  >
+      </div>
+
+      <div class="input-container">
+        <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+        
+        <input class="input-field" type="text" placeholder="Familya" name="lname" required>
+      </div>
+
+      <div class="input-container">
+        <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+        <input class="input-field" type="text" placeholder="Ulanyjy Ad" name="uname" required>
       </div>
       
-      
-    </div>
+      <div class="input-container1">
+        <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+        <input class="input-field" type="password" placeholder="Parola" name="psw" required id="psw">
+        <i class="fa fa-eye-slash goz" onclick="ParolaControl()"></i>
+      </div>
 
-    <div class="input-container">
-      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-      <input class="input-field" type="text" placeholder="Ad" name="firstname" required  >
-    </div>
-
-    <div class="input-container">
-      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-      <input class="input-field" type="text" placeholder="Familya" name="lastname" required>
-    </div>
-
-    <div class="input-container">
-      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-      <input class="input-field" type="text" placeholder="Ulanyjy Ad" name="usrnm" required>
-    </div>
-  
-    <div class="input-container">
-      <i class="fa fa-envelope icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-      <input class="input-field" type="text" placeholder="Email" name="email" required>
-    </div>
+      <div class="input-container1">
+        <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+        <input class="input-field" type="password" placeholder="Parola Gaytala" name="psw_confirm" id="psw_confirm" required>
+        <i class="fa fa-eye-slash goz1" onclick="ParolaControl1()"></i>
+      </div>
     
-    <div class="input-container">
-      <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-      <input class="input-field" type="password" placeholder="Parola" name="psw" required>
+      <button type="submit" class="btn" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">ÜyeBol</button>
+    </form>
+    
+    <div class="info-text">
+      <span>Ulgama Önden agza bolan bolsanız <a href="{% url 'giris' %}">Girişe</a> basın</span>
     </div>
-
-    <div class="input-container">
-      <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-      <input class="input-field" type="password" placeholder="Parola Gaytala" name="pswConfirm" required>
-    </div>
+</div>
+</div>
   
-    <button type="submit" class="btn" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">Register</button>
-  </form>
   
   <script>
     const file=document.querySelector('.file');
@@ -141,7 +226,49 @@
     }
 
   </script>
+
+<script>
+  const btn=document.querySelector('.goz');
+  const password=document.querySelector('#psw')
+  function ParolaControl(){
+    const paswordType=password.getAttribute('type');
+    if(paswordType === 'password'){
+      btn.classList.remove('fa-eye-slash')
+      btn.classList.add('fa-eye')
+      password.setAttribute('type','text')
+    }else{
+      btn.classList.remove('fa-eye')
+      btn.classList.add('fa-eye-slash')
+      password.setAttribute('type','password')
+    }
     
+  }
+</script>
+
+<script>
+  const btn1=document.querySelector('.goz1');
+  const password1=document.querySelector('#psw_confirm')
+  function ParolaControl1(){
+    const paswordType1=password1.getAttribute('type');
+    if(paswordType1 === 'password'){
+      btn1.classList.remove('fa-eye-slash')
+      btn1.classList.add('fa-eye')
+      password1.setAttribute('type','text')
+    }else{
+      btn1.classList.remove('fa-eye')
+      btn1.classList.add('fa-eye-slash')
+      password1.setAttribute('type','password')
+    }
+    
+  }
+</script>
+
+
+   
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+
 </body>
 </html>
     

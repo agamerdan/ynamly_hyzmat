@@ -15,7 +15,7 @@ def giris(request):
              user=authenticate(username=username,password=password)
              if user is None:
                  messages.warning(request,"Ulgamda Açılan Hasabynyz Yok")
-                 return render(request,'giris.html')
+                 return render(request,'users/giris.html')
              messages.success(request,"Ulgama Girmeyi Başardynyz")
              login(request,user)
              return redirect('index')
@@ -33,18 +33,19 @@ def Register(request):
         soyad=bilgiler.get("lname")
         uname=bilgiler.get("uname")
         pasword=bilgiler.get("psw")
-        pasword_confirim=bilgiler.get("psw_confirim")
+        pasword_confirim=bilgiler.get("psw_confirm")
         avatar=request.FILES.get("filename")
-        if avatar:
-            print("yüklendi")
-            
+        print(request.FILES.get("filename"))   
         if len(ad)<3 or len(soyad)<3 or len(uname)<3 or len(pasword)<3:
             messages.error(request, "İn az 3 harp girip bilersiniz")
-            return redirect("yazil")
+            return redirect("register")
         if pasword!=pasword_confirim:
             messages.warning(request, "Şifre bile şifre tekrarı eşit değil")
-            return redirect("yazil")
+            return redirect("register")
+        
         user, created=User.objects.get_or_create(username=uname)
+        
+        
         if created:
             user.first_name=ad
             user.last_name=soyad
@@ -60,7 +61,8 @@ def Register(request):
             return redirect('index')
         else:
             messages.warning(request, "Bu Hesap adı bln giriş yapıldı, Başka hesap açyn ")
-            return redirect("yazil.html")
+            print("Bu Hesap adı bln giriş yapıldı, Başka hesap açyn ")
+            return redirect("users/register.html")
     return render (request, "users/register.html")
         
    

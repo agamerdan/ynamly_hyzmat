@@ -1,37 +1,40 @@
-{% extends 'layout.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <title>YnamlyHyzmat</title>
 
-
-{% block body %}
-
-<style>
+  <style>
     * {box-sizing: border-box;}
 
 /* Style the input container */
 .input-container {
   display: flex;
-  max-width: 700px;
+  margin-bottom: 15px;
+}
+.input-container1 {
+  display: flex;
+  
   margin-bottom: 15px;
 }
 
 /* Style the form icons */
 .icon {
-  margin-top: 8px;
-  padding-top: 15px;
-  padding-bottom: 0px;
-  
-  color: white;
-  min-width: 50px;
-  height: 50px;
-  text-align: center;
-}
-
-/* Style the input fields */
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+        min-width: 50px;
+        text-align: center;
+      }
+      
 .input-field {
-  width: 100%;
-  padding: 15px;
-  outline: none;
+      width: 86%;
+      padding: 10px;
+      outline: none;
 }
 
 .input-field:focus {
@@ -53,56 +56,109 @@
   opacity: 1;
 }
 .goz{
-  display: flex;
-  align-items: center;
+  float: right;
   position: relative;
   height: 100%;
-  top: 25px;
+  top: 15px;
   right: 25px;
-  padding-right: 1px;
+  
 }
 .baslik{
   background: -webkit-linear-gradient(#940e99, #5a087c, #0e069b, #0b0664 );
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
   font-weight: 100px;
+  text-align: center;
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.logo{
+    max-width: 150px;
+    margin-left: 100px;
+    margin-top: 0px;
+    
+  }
+
+.info-text{
+      text-align: center;
+      margin-left: 50px;
+      margin-top: 50px;
 }
 
-</style>
-<div class="container">
-    <h1 class="baslik">Ulgama Gir</h1>
-    <hr>
-    <p style="color: rgb(141, 125, 4);">Boş Bolan Yerleri Doldurun we Gir Dügmesine Basın</p>
-    <hr>
-      
-           <form method="post" style="max-width:700px;margin:auto">
-            
-                {% csrf_token %}
-                <div class="input-container">
-                  <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-                  <input class="input-field" type="text" placeholder="Username" name="usrnm" required>
-                </div>
-              
-                <div class="input-container">
-                  <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
-                  <input class="input-field psw" type="password" placeholder="Password" name="psw" required>
-                  <i class="fa fa-eye-slash goz" onclick="ParolaControl()"></i>
-                </div>
-              
-                <button type="submit" class="gbtn " style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">Giriş</button>
-              </form>
-                
-                 
-           
-             
-
-            
+.form-group{
   
- 
+  max-width: 500px;
+  padding-left: 5px;
+  margin: auto;
+  border: #09090c solid 1px;
+  background-color: #e4e4ee;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
+
+</head>
+
+<body>
+  
+        
+    {% if messages %}
+      <div class="container bg-light">
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                
+                <strong>{{ message }}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            
+            {% endfor %}
+     
+        </div>
+     </div>
+    {% endif %}
+      
+     
+    
+  <div class="container">
+    
+  
+      <div class="logo-cntainer">
+      <a href="{% url 'index' %}"><img src="{% static 'resim/Resim3.png' %}" class="logo" alt=""></a> 
+      </div>
+       
+      <div class="form-group">
+        <div class="baslik">
+          <h2 ><strong>Hasabyňa Gir</strong></h2>
+        </div>
+         <form method="post" style="max-width:700px;margin:auto">
+                
+                    {% csrf_token %}
+                    <div class="input-container">
+                      <i class="fa fa-user icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+                      <input class="input-field" type="text" placeholder="Username" name="usrnm" required>
+                    </div>
+                  
+                    <div class="input-container1">
+                      <i class="fa fa-key icon" style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)"></i>
+                      <input class="input-field psw" type="password" placeholder="Password" name="psw" id="psw" required>
+                      <i class="fa fa-eye-slash goz" onclick="ParolaControl()"></i>
+                    </div>
+                    
+                    
+                  
+                    <button type="submit" class="gbtn " style="background-image: linear-gradient(to right, #940e99, #5a087c, #0e069b, #0b0664)">Giriş</button>
+                </form>
+    
+                <div class="info-text">
+                  <span >Hasabyňyz yok my? <a href="{% url 'register' %}">Hasap aç</a></span>
+                </div>
+      </div>
+    
 </div>
 <script>
   const btn=document.querySelector('.goz');
-  const password=document.querySelector('.psw')
+  const password=document.querySelector('#psw')
   function ParolaControl(){
     const paswordType=password.getAttribute('type');
     if(paswordType === 'password'){
@@ -117,4 +173,19 @@
     
   }
 </script>
-{% endblock  %}
+
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

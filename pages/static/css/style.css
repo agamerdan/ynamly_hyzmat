@@ -45,15 +45,7 @@
   }
 
  /* logo */
- @media screen and (max-width: 300px) {
-  .resim{
-    width: 50px;
-    margin-top: -10px;
-    margin-bottom: -10px;
-    
-  }
-  
-}
+
 
  .resim{
     width: 90px;
@@ -188,21 +180,9 @@ input[type=text], select, textarea, input[type=number],input[type=file] {
   resize: vertical;
 }
 
-
-
-
-
- 
-
-
 .chip{
   color: white
 }
-
-
-
-
-
 
 a:link {
   text-decoration: none;
@@ -210,13 +190,6 @@ a:link {
 .onay {
   width: 30%; 
 
-}
-
-
-/* Navbar aç kapa button*/
-.cont {
-  display: inline-block;
-  cursor: pointer;
 }
 
 .bar1, .bar2, .bar3 {

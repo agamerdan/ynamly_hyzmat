@@ -5,7 +5,7 @@ from autoslug import AutoSlugField
 
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    avatar=models.ImageField()
+    avatar=models.ImageField(default="media/avatar.jpg")
     slug = AutoSlugField(unique_with=['user__first_name', 'user__last_name'])
     
     

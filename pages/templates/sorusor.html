@@ -1,106 +1,111 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block body %}
- <form class="mb-4" method="post" action="#" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-    <div class="form-group soruForm">
-        <label for="exampleFormControlTextarea1"><h5>Soragyn Başlygy</h5></label>
-        <input type="text" class="form-control" name="soru_title">
-        <label for="exampleFormControlTextarea1"><h5>Soragyn İçerigi</h5></label>
-        <textarea id="content" name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
-        <p class="mt-2 tex text-danger info-text " >.Soragynyz in az 5 harply bir söz bolmalydyr</p>
-        <input id="soru_image" type="file" class="d-none"name="soru_image">
-        <a href="#" class="btn"><i class="fa fa-picture-o fa-5x" aria-hidden="true" ></i></a>
-        <small class="text text-secondary mb-5">Soragnız bilen baglanşykly surat bar bolsa yüklapbilersiniz</small>
-    </div>
-    <button id="sorag" disabled type="submit" class="btn btn-primary mb-2">Sorag Goş</button>
 
-</form>
- 
- {% if sorular %}
-   <div class="box_h">
-        {% for soru in sorular  %}
-        
-            <div class="disk">
-                <div class="row soru">
-                    <div class="col-md-12">
-                        <div class="card-mb-0">
-                            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-                                <div class="row" style=" bg-light ">
-                                    <div class="flex-shrink-0 fw-bold">
-                                        <img class="avatar" src="/media/{{soru.soran_avatar}}" alt="..." />
-                                    {{soru.adSoyad}}
-                                    </div>
-                                    <div class="col-md-3 ">
-                                        {% if soru.image %}
-                                           <img class="card-img" src="/media/{{soru.soru_image}}" alt="Avatar">
-                                        {% else %}
-                                           <img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar">
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="card-body soru-content">
-                                        <a href="{% url 'soru:soru_detay' soru.id %}" class="text-bg-light"><div class="card-title"><h3>{{soru.title}}</h3></div></a> 
-                                            <a href="{% url 'soru:soru_detay' soru.id %}" class="text-bg-light">
-                                                <p class="card-text ">
-                                                {{soru.content|truncatewords:40}}
-                                                </p>
-                                            </a> 
-                                            <br>
-                                            
-                                            <p class="card-text">
-                                                <small class="text-muted">{{soru.tarih|date:"SHORT_DATE_FORMAT"}}</small>
-                                            </p>
-                                            <p class="card-text">
-                                                <div class="card-text begeni">
-                                                  <small class="text-muted"><i class="fa-sharp fa-solid fa-heart soru-kalp"></i></small>
-                                                  <small class="text-muted soru-begenen">{{soru.like}}</small>
-                                                  <small class="text-muted"><i class="fa fa-commenting fa-lg soru-chat" aria-hidden="true"></i></small>
-                                                  <small class="text-muted cevap-yazan">{{soru.cevap_sayi}}</small>
-                                                </div>
-                                                <div class="card-text cevap">
-                                                  <a href="{% url 'soru:soru_detay' soru.id %}" class="btn">Cevapla</a>
-                                                </div>
-                                              
+<div class="container">
+    <form class="mb-4" method="post" action="#" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        <div class="form-group soruForm">
+            <label for="exampleFormControlTextarea1"><h5>Soragyn Başlygy</h5></label>
+            <input type="text" class="form-control" name="soru_title">
+            <label for="exampleFormControlTextarea1"><h5>Soragyn İçerigi</h5></label>
+            <textarea id="content" name="soru_content" class="form-control" rows="3" placehYorumunuzolder="Bu Hyzmat Barada Görşünüzü Yazyn"></textarea>
+            <p class="mt-2 tex text-danger info-text " >.Soragynyz in az 5 harply bir söz bolmalydyr</p>
+            <input id="soru_image" type="file" class="d-none"name="soru_image">
+            <a href="#" class="btn"><i class="fa fa-picture-o fa-5x" aria-hidden="true" ></i></a>
+            <small class="text text-secondary mb-5">Soragnız bilen baglanşykly surat bar bolsa yüklapbilersiniz</small>
+        </div>
+        <button id="sorag" disabled type="submit" class="btn btn-primary mb-2">Sorag Goş</button>
+    
+    </form>
+     
+     {% if sorular %}
+       <div class="box_h">
+            {% for soru in sorular  %}
+            
+                <div class="disk">
+                    <div class="row soru">
+                        <div class="col-md-12">
+                            <div class="card-mb-0">
+                                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                                    <div class="row" style=" bg-light ">
+                                        <div class="flex-shrink-0 fw-bold">
+                                            <img class="avatar" src="/media/{{soru.soran_avatar}}" alt="..." />
+                                        {{soru.adSoyad}}
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            {% if soru.image %}
+                                               <img class="card-img" src="/media/{{soru.soru_image}}" alt="Avatar">
+                                            {% else %}
+                                               <img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar">
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="card-body soru-content">
+                                            <a href="{% url 'soru:soru_detay' soru.id %}" class="text-bg-light"><div class="card-title"><h3>{{soru.title}}</h3></div></a> 
+                                                <a href="{% url 'soru:soru_detay' soru.id %}" class="text-bg-light">
+                                                    <p class="card-text ">
+                                                    {{soru.content|truncatewords:40}}
+                                                    </p>
+                                                </a> 
+                                                <br>
                                                 
-                                            </p>
-                                            
-                                           
+                                                <p class="card-text">
+                                                    <small class="text-muted">{{soru.tarih|date:"SHORT_DATE_FORMAT"}}</small>
+                                                </p>
+                                                <p class="card-text">
+                                                    <div class="card-text begeni">
+                                                      <small class="text-muted"><i class="fa-sharp fa-solid fa-heart soru-kalp"></i></small>
+                                                      <small class="text-muted soru-begenen">{{soru.like}}</small>
+                                                      <small class="text-muted"><i class="fa fa-commenting fa-lg soru-chat" aria-hidden="true"></i></small>
+                                                      <small class="text-muted cevap-yazan">{{soru.cevap_sayi}}</small>
+                                                    </div>
+                                                    <div class="card-text cevap">
+                                                      <a href="{% url 'soru:soru_detay' soru.id %}" class="btn">Cevapla</a>
+                                                    </div>
+                                                  
+                                                    
+                                                </p>
+                                                
+                                               
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        
+                            
                     </div>
-                        
                 </div>
-            </div>
+                
+                            <br>
             
-                        <br>
-        
-        {% endfor %}
-        <div class="pagination">
-            <span class="step-links">
-                {% if sorular.has_previous %}
-                    <a href="?page=1" class="previous"style="color: white; background-image: linear-gradient(to right, #940e99, #0e069b )">&laquo; Başa</a>
-                    <a href="?page={{ sorular.previous_page_number }}" class="previous round"style="color: white; background-image: linear-gradient(to right, #940e99,  #0e069b)">&#8249;</a>
-                
-                {% endif %}
-        
-                <span class="current">
-                    <div class="actif-number"style="color: white; background-color:#940e99">{{ sorular.number }}</div> of <div class="last-page"style="color: white; background-color:#0e069b">{{ sorular.paginator.num_pages }}</div>
+            {% endfor %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if sorular.has_previous %}
+                        <a href="?page=1" class="previous"style="color: white; background-image: linear-gradient(to right, #940e99, #0e069b )">&laquo; Başa</a>
+                        <a href="?page={{ sorular.previous_page_number }}" class="previous round"style="color: white; background-image: linear-gradient(to right, #940e99,  #0e069b)">&#8249;</a>
+                    
+                    {% endif %}
+            
+                    <span class="current">
+                        <div class="actif-number"style="color: white; background-color:#940e99">{{ sorular.number }}</div> of <div class="last-page"style="color: white; background-color:#0e069b">{{ sorular.paginator.num_pages }}</div>
+                    </span>
+            
+                    {% if sorular.has_next %}
+                        <a href="?page={{ sorular.next_page_number }}" class="next round"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">&#8250;</a>
+                        <a href="?page={{ sorular.paginator.num_pages }}" class="next"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">Sona &raquo;</a>
+                    
+                    {% endif %}
                 </span>
-        
-                {% if sorular.has_next %}
-                    <a href="?page={{ sorular.next_page_number }}" class="next round"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">&#8250;</a>
-                    <a href="?page={{ sorular.paginator.num_pages }}" class="next"style="background-image: linear-gradient(to right, #940e99,  #0e069b )">Sona &raquo;</a>
-                
-                {% endif %}
-            </span>
+            </div>
         </div>
-    </div>
+</div>
+
+ 
 
 {% else %} 
 <div>Henüz hiç bir sorag yayynlanmady</div>
