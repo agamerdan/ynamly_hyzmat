@@ -2,11 +2,43 @@
 {% load static %}
 
 {% block body %}
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+<style>
+  .slider-wrapper .image-list{
+    display: grid;
+    gap: 18px;
+    font-size: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .slider-wrapper .image-list::-webkit-scrollbar{
+    display: none;
+  }
+  .slider-wrapper .image-list .image-item{
+    width: 325px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+</style>
 <br>
-  <div class="row">
-    <div class="col">
-      <h1>Burası Kayan Resim Yeri</h1>
+  <div class="slider-wrapper">
+    <button class=" slide-button material-symbols-rounded">chevron-left</button>
+    <div class="image-list">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
     </div>
+    
   </div>
     <div class="container">
        <div class="row" >
@@ -96,6 +128,10 @@
       curentitem+= 3;
     }
    
+</script>
+
+<script>
+   const slide=document.querySelector(".slide")
 </script>
 {% else %}
 <p>Öne çykan Hyzmat Yok</p>

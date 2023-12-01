@@ -3,7 +3,8 @@
 {% block body %}
 
 {% if hizmetlerim %}
-  <h1>Hyzmatlarym</h1>
+<div class="container">
+   <h1>Hyzmatlarym</h1>
    <br>
   <table class="table">
     <thead>
@@ -38,6 +39,8 @@
 <h1>Hyzmatlarym</h1>
 <hr>
 <p>İntak Hyzmat Yayynlamadınız <a href="{% url 'hizmet:hizmet_ekle' %}">Hyzmatynyzy Yayynlan</a></p>
+</div>
+ 
 {% endif %}
 {% endblock body %}
 

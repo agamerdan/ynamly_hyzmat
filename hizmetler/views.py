@@ -30,11 +30,13 @@ def hizmet_ekle(request):
     articl=Article()
     if request.method=="POST" or request.method=="FILES":
         article=request.POST
+        resim=request.FILES
         telefon=article.get('number')
         title=article.get('title')
         fiyat=article.get('price')
         context=article.get('context')
-        hizmet_img=article.get('hizmetfile')
+        hizmet_img=resim.get('hizmetfile')
+        print(hizmet_img)
         articl.author=request.user
         articl.adSoyad=request.user.first_name +" "+ request.user.last_name
         articl.telefon=telefon
