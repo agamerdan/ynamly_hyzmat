@@ -1,10 +1,14 @@
+
 {% extends 'layout.html' %}
 {% load static %}
 
 {% block body %}
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
 
 <style>
+  .slider-wrapper{
+    position: relative;
+  }
   .slider-wrapper .image-list{
     display: grid;
     gap: 18px;
@@ -21,24 +25,120 @@
     height: 400px;
     object-fit: cover;
   }
+  .slider-wrapper .slide-button{
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: rgb(49, 49, 49)a7a;
+    font-size: 2.2rem;
+    cursor:pointer;
+    border-radius: 50px;
+    transform: translateY(-50%);
+  }
+
+  .slider-wrapper .slide-button:hover {
+    background: #000;
+  }
+
+  .slider-wrapper .slide-button#prev-slide{
+    left: -10px;
+  }
+  .slider-wrapper .slide-button#next-slide{
+    right: -10px;
+  }
+
+ .content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  
+  padding: 20px;
+}
 
 </style>
 <br>
   <div class="slider-wrapper">
-    <button class=" slide-button material-symbols-rounded">chevron-left</button>
+    <button id="prev-slide" class=" slide-button material-symbols-outlined">chevron_left</button>
     <div class="image-list">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-      <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      <div class="container">
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
+        <div class="content">
+          <h1>Heading</h1>
+          <p style="color: #000;">Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+        </div>
+      </div>
+      
     </div>
-    
+    <button id="next-slide" class=" slide-button material-symbols-outlined">chevron_right</button>
   </div>
     <div class="container">
        <div class="row" >
@@ -115,7 +215,7 @@
   </div> 
     </div>     
       
-  
+
  
 <script>
     let loadbtn=document.querySelector('#loadmore');
@@ -130,9 +230,8 @@
    
 </script>
 
-<script>
-   const slide=document.querySelector(".slide")
-</script>
+
+
 {% else %}
 <p>Öne çykan Hyzmat Yok</p>
  
@@ -140,7 +239,7 @@
 
  
 
-
+<script src="{% static 'js/indexSlide.js' %}"></script>
 {% endblock body %}
 
 

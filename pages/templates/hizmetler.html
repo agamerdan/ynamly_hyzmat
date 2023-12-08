@@ -25,7 +25,7 @@
                  <div class="row" style=" bg-light ">
                     <div class="col-md-3">
                         {% if aranan.hizmet_img %}
-                        <a href="{% url 'hizmet:detay' aranan.id %}"><img class="card-img" src="/media/{{aranan.hizmet_img}}" alt="Avatar"></a>
+                        <a href="{% url 'hizmet:detay' aranan.id %}"><img class="card-img" src="/media/hizmet/{{aranan.hizmet_img}}" alt="Avatar"></a>
                         {% else %}
                         <a href="{% url 'hizmet:detay' aranan.id %}"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
                         {% endif %}
@@ -74,7 +74,7 @@
                                <div class="row" style=" bg-light ">
                                    <div class="col-md-3">
                                         {% if article.hizmet_img %}
-                                        <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="/media/{{article.hizmet_img}}" alt="Avatar"></a>
+                                        <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="/media/hizmet/{{article.hizmet_img}}" alt="Avatar"></a>
                                         {% else %}
                                         <a href="{% url 'hizmet:detay' article.id %}"><img class="card-img" src="{% static 'resim/Resim1.png' %}" alt="Avatar"></a>
                                         {% endif %}
