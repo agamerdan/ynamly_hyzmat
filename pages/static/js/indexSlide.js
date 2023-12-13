@@ -21,10 +21,10 @@ const initSlider = () => {
     function MetotStart(){
         imageList.scrollBy({ left: 360, behavior: "smooth" });
         console.log(imageList.scrollLeft);
-        
+       
         if(imageList.scrollLeft >= imageList.clientWidth-360)
             imageList.scrollLeft=0;
-        setTimeout(MetotStart,2000)
+        setTimeout(MetotStart,3000)
     }
 
 }

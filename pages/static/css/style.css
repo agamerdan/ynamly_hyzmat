@@ -1,16 +1,13 @@
+/*templates/templates/layout.html*/
 .arka{
  background-color: #ede9e9;
 }
-.not-visible{
-  display:none;
-}
-
 
 * {
     box-sizing: border-box;
   }
   
-  /* Style the search field */
+  /* Style the search field   templates/templates/index.html*/
   form.example input[type=text] {
     padding: 10px;
     font-size: 17px;
@@ -44,18 +41,13 @@
     display: table;
   }
 
- /* logo */
-
-
+ /*  templates/templates/includes/navbar.html  */
  .resim{
     width: 90px;
     margin-top: -10px;
     margin-bottom: -10px;
     
   }
-
-
-
 
   /* Form */
   body {font-family: Arial, Helvetica, sans-serif;}
@@ -78,30 +70,29 @@ input[type=text]:focus, input[type=password],input[type="textarea"]:focus {
 }
 
 /* Set a style for all buttons */
-
-
 button:hover {
   opacity:1;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
+/* Add padding to container elements   
+templates/templates/users/register.html
+templates/templates/users/giris.html
+templates/templates/soru_detay.html
+templates/templates/sorusor.html
+templates/templates/index.html
+templates/templates/includes/navbar.html
+templates/templates/hizmet_ekle.html
+templates/templates/hizmetlerim.html
+templates/templates/hizmetler.html
+templates/templates/duzelt.html
+templates/templates/detay.html
+templates/templates/about.html
+*/
 .container {
   padding: 16px;
 }
 
-/* The Modal (background) */
+/* The Modal (background)   templates/templates/includes/navbar.html  */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -146,20 +137,10 @@ hr {
 }
 
 /* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+
 
 /* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-  
-}
+
 
 
 input[type=text], select, textarea, input[type=number],input[type=file] {
@@ -171,17 +152,12 @@ input[type=text], select, textarea, input[type=number],input[type=file] {
   resize: vertical;
 }
 
-.chip{
-  color: white
-}
+
 
 a:link {
   text-decoration: none;
 }
-.onay {
-  width: 30%; 
 
-}
 
 .bar1, .bar2, .bar3 {
   width: 35px;
@@ -233,11 +209,6 @@ a:link {
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0, 0, .2);
   display: none;
-}
-.contain .container-box .box:nth-child(1),
-.contain .container-box .box:nth-child(2),
-.contain .container-box .box:nth-child(3){
-  display: inline-block;
 }
 
 .contain .container-box .box .image{
@@ -321,49 +292,7 @@ display: inline-block;
 }
 
 /*Profil Edit*/
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
 
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 
 /*Next prewiew button*/
 
@@ -468,12 +397,7 @@ display: inline-block;
 }
 
 /*Form kontrol işlemi*/
-.basarli{
-  border: solid rgb(27, 183, 27) 2px !important;
-}
-.hatali{
-    border: solid red 2px !important;
-}
+
 
 .soru{
   background-color: #d5dad5 !important;
@@ -534,34 +458,6 @@ display: inline-block;
 .prof, i:hover{
   cursor: pointer;
 }
-
-.dropdown-content {
-  display: block;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-
 
 
 

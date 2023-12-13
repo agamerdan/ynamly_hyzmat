@@ -41,7 +41,7 @@
   }
 
   .slider-wrapper .slide-button:hover {
-    background: #000;
+    background: #000000;
   }
 
   .slider-wrapper .slide-button#prev-slide{
@@ -51,91 +51,108 @@
     right: -10px;
   }
 
- .content {
-  position: absolute;
-  bottom: 0;
-  background: rgb(0, 0, 0); /* Fallback color */
-  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-  color: #f1f1f1;
-  
-  padding: 20px;
-}
+ .slider-wrapper .image-list .slide-title{
+   display: grid;
+   padding-left:10px;
+   color: rgb(255,255,255);
+   background-color: rgb(0, 0 ,0, 60%);
+   position: relative;
+   bottom: 90px;
+ }
+ 
+ .slider-wrapper .image-list .slide-title .slide-content{
+   
+   color: rgb(255,255,255);
+   font-size: 16pt;
+   margin: 0;
+   padding: 0;
+ }
+ .slider-wrapper .image-list .slide-link:hover .image-item{
+  -webkit-filter: blur(1px); /* Safari 6.0 - 9.0 */
+  filter: blur(1px);
+ }
+ .slider-wrapper .image-list .slide-link:hover .slide-title{
+  background-color: rgb(0, 0 ,0, 75%);
+  box-shadow: 0px 20px  50px rgba(17, 17, 17, 0.986) inset;
+ }
+ 
 
 </style>
 <br>
+
   <div class="slider-wrapper">
     <button id="prev-slide" class=" slide-button material-symbols-outlined">chevron_left</button>
     <div class="image-list">
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
-      <div class="container">
-        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="" class="image-item">
-        <div class="content">
-          <h1>Heading</h1>
-          <p style="color: #000;">Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-        </div>
-      </div>
+      <a class="slide-link" href="#"><div>
+        <img src="media/hizmet/okul.jpg" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+           <div class="slide-title">
+              <h1>Okuw Çakylygy</h1>
+              <small class="slide-content">05.11.2023</small>
+           </div>
+    </div></a>
+    <a class="slide-link" href="#"><div >
+      <img src="media/hizmet/images.jfif" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+         <div class="slide-title">
+            <h1>Universte..</h1>
+            <small class="slide-content">09.11.2023</small>
+         </div>
+  </div></a>
+  <a class="slide-link" href="#"><div >
+    <img src="media/hizmet/yazilim_nuZcbIf.jpg" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+       <div class="slide-title">
+          <h1>Kodlama Sapak</h1>
+          <small class="slide-content">18.11.2023</small>
+       </div>
+</div></a>
+<a class="slide-link" href="#"><div >
+  <img src="media/hizmet/kimlik-1.jpg" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>Kimlik ...</h1>
+        <small class="slide-content">18.11.2023</small>
+     </div>
+</div></a>
+<a class="slide-link" href="#"><div >
+  <img src="media/hizmet/1_9RTsU6ziJWzrfDxistxzUw.jpg" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>Pul Ugratma</h1>
+        <small class="slide-content">22.11.2023</small>
+     </div>
+</div></a>
+<a class="slide-link" href="#"><div >
+  <img src="media/hizmet/indir.png" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>Kimlik işlemleri</h1>
+        <small class="slide-content">27.11.2023</small>
+     </div>
+</div></a>
+<a class="slide-link" href="#"><div >
+  <img src="media\hizmet\images.jpg" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>viza İşleri</h1>
+        <small class="slide-content">28.11.2023</small>
+     </div>
+</div></a>      
+<a class="slide-link" href="#"><div >
+  <img src="media\hizmet\24303266462420121951transfer.png" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>Para Transveri</h1>
+        <small class="slide-content">30.11.2023</small>
+     </div>
+</div></a>      
+<a class="slide-link" href="#"><div >
+  <img src="media\hizmet\indir_1.jfif" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>Prigloşenya</h1>
+        <small class="slide-content">01.12.2023</small>
+     </div>
+</div></a>      
+<a class="slide-link" href="#"><div >
+  <img src="media\hizmet\indir.jpg" width="300px" height="300px" alt="Tirileeeeee" class="image-item"  >
+     <div class="slide-title">
+        <h1>Uçar Bileti</h1>
+        <small class="slide-content">7.12.2023</small>
+     </div>
+</div></a>       
       
     </div>
     <button id="next-slide" class=" slide-button material-symbols-outlined">chevron_right</button>
